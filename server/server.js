@@ -2,6 +2,8 @@ const express = require('express')
 const firebase = require('firebase')
 require("dotenv").config();
 const app = express();
+const orderedJSON = require("ordered-json");
+
 const PORT = process.env.PORT || 5001
 
 const firebaseConfig = {
@@ -17,7 +19,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore()
 
-app.get('/', (req, res) => {
+app.get('/product', (req, res) => {
     (async() => {
         try {
             let response = []
@@ -26,12 +28,15 @@ app.get('/', (req, res) => {
                 let docs = querysnapshot.docs
 
                 for (let doc of docs) {
-                    response.push(doc.data())
+                    const json = orderedJSON.stringify(doc.data(), {order:["Name", "Category", "Price", "Quantity", "Description"]})
+                    const output = JSON.parse(json)
+                    response.push(output)
                 }
 
                 const product = { "product": response }
     
                 return res.status(200).send(product)
+                // return res.json(product)
             })
         } catch (error) {
             return res.status(500).send(error)

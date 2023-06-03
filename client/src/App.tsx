@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
-
-export type apiType = {
-  users: string[]
-}
+import { useEffect, useState } from 'react';
+import { apiProps } from '../types/mainTypes';
 
 function App() {
 
-  const [backendData, setBackendData] = useState<apiType | null>()
+  const [backendData, setBackendData] = useState<apiProps | null>()
 
   useEffect(() => {
-    fetch("/api").then(
+    fetch("/product").then(
       response => response.json()
     ).then(
       data => {
@@ -20,11 +17,11 @@ function App() {
 
   return (
     <div>
-      {(typeof backendData?.users === 'undefined') ? (
+      {(typeof backendData?.product === 'undefined') ? (
         <p>Loading ...</p>
       ) : (
-        backendData?.users.map((user,index) => (
-          <p key={index}>{user}</p>
+        backendData?.product.map((item,index) => (
+          <p key={index}>{item.Name}</p>
         ))
       )}
     </div>
