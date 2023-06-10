@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { apiProps } from '../types/mainTypes';
+import { apiProps } from './types/mainTypes';
+import Container from './components/Container';
+import Topbar from './components/Topbar'
 
-function App() {
+export default function App() {
 
   const [backendData, setBackendData] = useState<apiProps | null>()
 
@@ -20,12 +22,14 @@ function App() {
       {(typeof backendData?.product === 'undefined') ? (
         <p>Loading ...</p>
       ) : (
-        backendData?.product.map((item,index) => (
-          <p key={index}>{item.Name}</p>
-        ))
+        // backendData?.product.map((item,index) => (
+        //   <p key={index}>{item.Name}</p>
+        // ))
+        <>
+          <Topbar />
+          <Container />
+        </>
       )}
     </div>
   );
 }
-
-export default App;
