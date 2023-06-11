@@ -6,6 +6,7 @@ import Topbar from './components/Topbar'
 export default function App() {
 
   const [backendData, setBackendData] = useState<apiProps | null>()
+  const [selectedCategory, setSelectedCategory] = useState<string>("All")
 
   useEffect(() => {
     fetch("/product").then(
@@ -22,12 +23,9 @@ export default function App() {
       {(typeof backendData?.product === 'undefined') ? (
         <p>Loading ...</p>
       ) : (
-        // backendData?.product.map((item,index) => (
-        //   <p key={index}>{item.Name}</p>
-        // ))
         <>
-          <Topbar />
-          <Container />
+          <Topbar categories={backendData?.category} setSelectedCategory={setSelectedCategory} />
+          <Container apiData={backendData?.product} selectedCategory={selectedCategory} />
         </>
       )}
     </div>

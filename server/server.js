@@ -22,7 +22,8 @@ const db = firebase.firestore()
 app.get('/product', (req, res) => {
     (async() => {
         try {
-            let response = []
+            let product = []
+            let category = []
 
             await db.collection("Product").get().then(querysnapshot => {
                 let docs = querysnapshot.docs
@@ -30,14 +31,22 @@ app.get('/product', (req, res) => {
                 for (let doc of docs) {
                     const json = orderedJSON.stringify(doc.data(), {order:["Name", "Category", "Price", "Quantity", "Description"]})
                     const output = JSON.parse(json)
-                    response.push(output)
+                    product.push(output)
                 }
-
-                const product = { "product": response }
-    
-                return res.status(200).send(product)
-                // return res.json(product)
             })
+
+            await db.collection("Category").get().then(querysnapshot => {
+                let docs = querysnapshot.docs
+
+                for (let doc of docs) {
+                    const json = orderedJSON.stringify(doc.data(), {order:["Name"]})
+                    const output = JSON.parse(json)
+                    category.push(output)
+                }
+            })
+
+            const xvmart = { "product": product, "category": category }
+            return res.status(200).send(xvmart)
         } catch (error) {
             return res.status(500).send(error)
         }
