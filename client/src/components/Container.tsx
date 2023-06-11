@@ -28,7 +28,7 @@ export default function Container({apiData, selectedCategory}: {apiData: product
     // ]
 
     return (
-        <div className="container m-auto h-screen">
+        <div className="container m-auto h-screen mt-24">
             <div className="flex mt-4 h-48 rounded-md bg-orange-100 items-center justify-center">
                 Hall XV pic here
             </div>
