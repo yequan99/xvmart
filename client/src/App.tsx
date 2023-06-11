@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route } from "react-router-dom"
 import { apiProps } from './types/mainTypes';
-import Container from './components/Container';
-import Topbar from './components/Topbar'
+import Home from './components/Home'
+import Cart from './components/Cart'
 
 export default function App() {
 
   const [backendData, setBackendData] = useState<apiProps | null>()
-  const [selectedCategory, setSelectedCategory] = useState<string>("All")
 
   useEffect(() => {
     fetch("/product").then(
@@ -23,10 +23,10 @@ export default function App() {
       {(typeof backendData?.product === 'undefined') ? (
         <p>Loading ...</p>
       ) : (
-        <>
-          <Topbar categories={backendData?.category} setSelectedCategory={setSelectedCategory} />
-          <Container apiData={backendData?.product} selectedCategory={selectedCategory} />
-        </>
+        <Routes>
+          <Route path="/" element={ <Home backendData={backendData} /> } />
+          <Route path="/cart" element={ <Cart backendData={backendData} /> } />
+        </Routes>
       )}
     </div>
   );

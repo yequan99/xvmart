@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react";
+import { Link } from "react-router-dom";
 
 import xvmartLogo from '../assets/images/xvmart.jpg';
 import { categoryProps } from '../types/mainTypes'
@@ -26,9 +27,11 @@ const Topbar: React.FunctionComponent<IProps> = (props: IProps) => {
         <div className="fixed top-0 w-full z-50 bg-white">
             <div className="flex flex-row container m-auto mt-4 items-center justify-between">
                 <div className="flex items-center">
-                    {/* eslint-disable-next-line */}
-                    <img className="h-16 w-48" src={xvmartLogo} />
-                    <div className="pl-8">
+                    <Link to="/">
+                        {/* eslint-disable-next-line */}
+                        <img className="h-16 w-48" src={xvmartLogo} />
+                    </Link>
+                    <div className="pl-10">
                         <FormControl sx={{ minWidth: 160 }}>
                             <InputLabel id="demo-simple-select-label">Categories</InputLabel>
                             <Select
@@ -45,9 +48,9 @@ const Topbar: React.FunctionComponent<IProps> = (props: IProps) => {
                         </FormControl>
                     </div>
                 </div>
-                <div>
+                <Link to="/cart">
                     CART
-                </div>
+                </Link>
             </div>
         </div>
     )

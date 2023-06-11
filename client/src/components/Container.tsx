@@ -33,7 +33,7 @@ export default function Container({apiData, selectedCategory}: {apiData: product
                 Hall XV pic here
             </div>
             <div className="mt-8">hello, late night cravings</div>
-            <div className="grid grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-4 gap-x-4 gap-y-8 py-8">
                 {apiData.map((item,index) => (
                     (item.Category === selectedCategory || selectedCategory === "All") &&
                     <Cards key={index} item={item} />
