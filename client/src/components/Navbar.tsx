@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-export default function Topbar({ categories, setSelectedCategory }: { categories: categoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>> }) {
+export default function Navbar({ categories, setSelectedCategory, cartCount }: { categories: categoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>>, cartCount: number }) {
 
     const [category, setCategory] = useState("All")
 
