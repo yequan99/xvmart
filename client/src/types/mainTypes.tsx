@@ -14,3 +14,9 @@ export type productProps = {
 export type categoryProps = {
     Name: string
 }
+
+export type orderProps = {
+    Name: string
+    Price: number
+    Quantity: number
+}

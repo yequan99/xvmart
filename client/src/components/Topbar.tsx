@@ -9,18 +9,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-interface IProps {
-    categories: categoryProps[],
-    setSelectedCategory: Dispatch<SetStateAction<string>>
-}
+export default function Topbar({ categories, setSelectedCategory }: { categories: categoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>> }) {
 
-const Topbar: React.FunctionComponent<IProps> = (props: IProps) => {
-
-    const [selectedCategory, setSelectedCategory] = useState("All")
+    const [category, setCategory] = useState("All")
 
     const handleDropdownChange = (event: SelectChangeEvent) => {
+        setCategory(event.target.value as string)
         setSelectedCategory(event.target.value as string)
-        props.setSelectedCategory(event.target.value as string)
     }
 
     return (
@@ -37,11 +32,11 @@ const Topbar: React.FunctionComponent<IProps> = (props: IProps) => {
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={selectedCategory}
+                                value={category}
                                 label="Standard"
                                 onChange={handleDropdownChange}
                             >
-                                {props.categories.map((category,index) => (
+                                {categories.map((category,index) => (
                                     <MenuItem key={index} value={category.Name}>{category.Name}</MenuItem>
                                 ))}
                             </Select>
@@ -55,5 +50,3 @@ const Topbar: React.FunctionComponent<IProps> = (props: IProps) => {
         </div>
     )
 }
-
-export default Topbar
