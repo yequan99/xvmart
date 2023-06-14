@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { productProps, orderProps } from "../types/mainTypes"
+import { orderProps } from "../types/mainTypes"
 
-export default function OrderItems({ cartItems, setOrders }: { cartItems: productProps, setOrders: Dispatch<SetStateAction<orderProps[]>> }) {
+export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: orderProps, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
 
     const [quantity, setQuantity] = useState<number>(1)
 
     useEffect(() => {
-        setOrders((prevItems) =>
+        setAddedToCart((prevItems) =>
             prevItems.map((item) =>
                 item.Name === cartItems.Name ? { ...item, Quantity: quantity } : item
             )
@@ -21,7 +21,7 @@ export default function OrderItems({ cartItems, setOrders }: { cartItems: produc
     }
 
     const incrementCounter = () => {
-        if (quantity < cartItems.Quantity) {
+        if (quantity < cartItems.MaxQuantity) {
             setQuantity(quantity + 1)
         }
     }
@@ -43,7 +43,7 @@ export default function OrderItems({ cartItems, setOrders }: { cartItems: produc
             </div>
             <div className="flex flex-col justify-center gap-3 pr-4 items-center">
                 <div className="font-bold">
-                    ${cartItems.Price}0
+                    ${cartItems.Price}
                 </div>
                 <div className="border-2 border-slate-300 rounded-lg flex justify-between w-24">
                     <h1 className="pl-2 cursor-pointer" onClick={decrementCounter}>-</h1>

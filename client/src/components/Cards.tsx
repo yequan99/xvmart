@@ -1,13 +1,21 @@
-import { Dispatch, SetStateAction, useState } from 'react'
-import { productProps } from '../types/mainTypes'
+import { Dispatch, SetStateAction, useState, useEffect } from 'react'
+import { productProps, orderProps } from '../types/mainTypes'
 
-export default function Cards({ item, setAddedToCart }: { item: productProps, setAddedToCart: Dispatch<SetStateAction<string>> }) {
+export default function Cards({ item, setAddedToCart }: { item: productProps, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
 
     const [added, setAdded] = useState<boolean>(false)
     const [buttonText, setButtonText] = useState<string>("Add to Cart")
 
+    useEffect(() => {
+        setAddedToCart((cartItems) =>
+            cartItems.map((cartItem) =>
+                cartItem.Name === item.Name ? added ? { ...cartItem, Quantity: 1 } : { ...cartItem, Quantity: 0 } : cartItem
+            )
+        )
+        // eslint-disable-next-line 
+    }, [added])
+
     const handleClick = () => {
-        setAddedToCart(item.Name)
         setAdded(!added)
         if (added) {
             setButtonText("Add to Cart")

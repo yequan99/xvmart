@@ -8,6 +8,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function Navbar({ categories, setSelectedCategory, cartCount }: { categories: categoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>>, cartCount: number }) {
 
@@ -44,7 +46,9 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
                     </div>
                 </div>
                 <Link to="/cart">
-                    CART
+                    <Badge badgeContent={cartCount} color="primary">
+                        <ShoppingCartIcon />
+                    </Badge>
                 </Link>
             </div>
         </div>

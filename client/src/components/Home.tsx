@@ -1,10 +1,8 @@
-import { useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 import Cards from './Cards'
-import { productProps } from '../types/mainTypes'
+import { productProps, orderProps } from '../types/mainTypes'
 
-export default function Home({apiData, selectedCategory}: {apiData: productProps[], selectedCategory: string}) {
-
-    const [addedToCart, setAddedToCart] = useState("")
+export default function Home({apiData, selectedCategory, setAddedToCart }: {apiData: productProps[], selectedCategory: string, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
 
     return (
         <div className="container m-auto h-screen mt-24">
@@ -12,7 +10,6 @@ export default function Home({apiData, selectedCategory}: {apiData: productProps
                 Hall XV pic here
             </div>
             <div className="mt-8">hello, late night cravings</div>
-            <div>{addedToCart}</div>
             <div className="grid grid-cols-4 gap-x-4 gap-y-8 py-8">
                 {apiData.map((item,index) => (
                     (item.Category === selectedCategory || selectedCategory === "All") &&
