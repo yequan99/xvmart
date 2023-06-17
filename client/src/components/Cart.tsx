@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { Link } from "react-router-dom";
 import OrderItems from './OrderItems'
+import SubmitOrderForm from './SubmitOrderForm';
 import { orderProps } from "../types/mainTypes"
 
 export default function Cart({cartItems, setAddedToCart}: { cartItems: orderProps[], setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
@@ -32,6 +33,9 @@ export default function Cart({cartItems, setAddedToCart}: { cartItems: orderProp
                             <div className="flex justify-between pt-4">
                                 <h1>Total Amount: </h1>
                                 <h1>${totalCost}</h1>
+                            </div>
+                            <div className="mt-4">
+                                <SubmitOrderForm />
                             </div>
                         </div>
                     </div>

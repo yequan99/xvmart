@@ -23,12 +23,12 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
     return (
         <div className="fixed top-0 w-full z-50 bg-white">
             <div className="flex flex-row container m-auto mt-4 items-center justify-between">
-                <div className="flex items-center">
+                <div className="flex items-center justify-center">
                     <Link to="/">
                         {/* eslint-disable-next-line */}
                         <img className="h-16 w-48" src={xvmartLogo} />
                     </Link>
-                    <div className="pl-10">
+                    <div className="pl-10 pt-2">
                         <FormControl sx={{ minWidth: 160 }}>
                             <InputLabel id="demo-simple-select-label">Categories</InputLabel>
                             <Select
@@ -37,6 +37,7 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
                                 value={category}
                                 label="Standard"
                                 onChange={handleDropdownChange}
+                                size="small"
                             >
                                 {categories.map((category,index) => (
                                     <MenuItem key={index} value={category.Name}>{category.Name}</MenuItem>

@@ -23,3 +23,10 @@ export type orderProps = {
     MaxQuantity: number,
     Description: string
 }
+
+export type UserForm = {
+    Name: string,
+    Block: number | null,
+    Level: number | null,
+    Unit: number | null,
+}
