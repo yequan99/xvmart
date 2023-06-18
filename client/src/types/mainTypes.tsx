@@ -1,9 +1,9 @@
-export type apiProps = {
-    product: productProps[],
-    category: categoryProps[]
+export type ApiProps = {
+    product: ProductProps[],
+    category: CategoryProps[]
 }
 
-export type productProps = {
+export type ProductProps = {
     Name: string,
     Category: string,
     Price: number,
@@ -11,11 +11,11 @@ export type productProps = {
     Description: string
 }
 
-export type categoryProps = {
+export type CategoryProps = {
     Name: string
 }
 
-export type orderProps = {
+export type OrderProps = {
     Name: string,
     // Category: string,
     Price: number,
@@ -24,7 +24,7 @@ export type orderProps = {
     Description: string
 }
 
-export type UserForm = {
+export type UserFormProps = {
     Name: string,
     Block: number | null,
     Level: number | null,

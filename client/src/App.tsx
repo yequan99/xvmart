@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom"
-import { apiProps, orderProps } from './types/mainTypes';
+import { ApiProps, OrderProps } from './types/mainTypes';
 import Cart from './components/Cart'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 
 export default function App() {
 
-  const [backendData, setBackendData] = useState<apiProps | null>()
+  const [backendData, setBackendData] = useState<ApiProps | null>()
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
-  const [addedToCart, setAddedToCart] = useState<orderProps[]>([])
+  const [addedToCart, setAddedToCart] = useState<OrderProps[]>([])
 
   useEffect(() => {
     fetch("/product").then(

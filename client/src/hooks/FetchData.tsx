@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { apiProps } from '../types/mainTypes';
+import { ApiProps } from '../types/mainTypes';
 
 export default function FetchData() {
-    const [backendData, setBackendData] = useState<apiProps | null>()
+    const [backendData, setBackendData] = useState<ApiProps | null>()
 
     useEffect(() => {
       fetch("/product").then(

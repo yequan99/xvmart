@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react"
 import Cards from './Cards'
-import { productProps, orderProps } from '../types/mainTypes'
+import { ProductProps, OrderProps } from '../types/mainTypes'
 
-export default function Home({apiData, selectedCategory, setAddedToCart }: {apiData: productProps[], selectedCategory: string, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
+export default function Home({apiData, selectedCategory, setAddedToCart }: {apiData: ProductProps[], selectedCategory: string, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 
     return (
         <div className="container m-auto h-screen mt-24">

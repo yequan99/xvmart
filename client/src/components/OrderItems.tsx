@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { orderProps } from "../types/mainTypes"
+import { OrderProps } from "../types/mainTypes"
 
-export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: orderProps, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
+export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: OrderProps, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 
     const [quantity, setQuantity] = useState<number>(1)
 

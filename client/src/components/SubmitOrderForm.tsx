@@ -1,96 +1,124 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
-import { UserForm } from '../types/mainTypes';
-import { TextField, Button, MenuItem } from '@mui/material';
+import { useState, ChangeEvent } from 'react'
+import { UserFormProps, OrderProps } from '../types/mainTypes';
+import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
 
-export default function SubmitOrderForm() {
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 600,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
-    const [formData, setFormData] = useState<UserForm>({Name: "", Block: null, Level: null, Unit: null})
+export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]}) {
+
+    const [formData, setFormData] = useState<UserFormProps>({Name: "", Block: null, Level: null, Unit: null})
+    const [filled, setFilled] = useState(true)
+    const [open, setOpen] = useState(false)
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
-  
-    const handleSubmit = (event: FormEvent) => {
-        event.preventDefault()
+
+    const goToPayment = () => {
+        if (formData.Name === "" || formData.Block === null || formData.Level === null || formData.Unit === null || formData.Unit < 1000 || formData.Unit > 2000) {
+            setFilled(false)
+        }
+        else {
+            setOpen(true)
+        }
+    }
+
+    const sendOrder = () => {
         console.log(formData)
-    }  
+        console.log(cartItems)
+    }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div className="my-4">
-                    <TextField
-                        label="Name"
-                        size="small"
-                        type="text"
-                        name="Name"
-                        value={formData.Name}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex flex-row items-center">
-                    <TextField
-                        select
-                        sx={{ width: "100px" }}
-                        label="Block"
-                        size="small"
-                        type="number"
-                        name="Block"
-                        value={formData.Block}
-                        onChange={handleChange}
-                    >
-                        <MenuItem value="69">69</MenuItem>
-                        <MenuItem value="70">70</MenuItem>
-                        <MenuItem value="71">71</MenuItem>
-                        <MenuItem value="72">72</MenuItem>
-                    </TextField>
-                    <h1 className="mx-2">-</h1>
-                    <TextField
-                        select
-                        sx={{ width: "100px" }}
-                        label="Level"
-                        size="small"
-                        type="number"
-                        name="Level"
-                        value={formData.Level}
-                        onChange={handleChange}
-                    >
-                        <MenuItem value="1">1</MenuItem>
-                        <MenuItem value="2">2</MenuItem>
-                        <MenuItem value="3">3</MenuItem>
-                        <MenuItem value="4">4</MenuItem>
-                        <MenuItem value="5">5</MenuItem>
-                    </TextField>
-                    <h1 className="mx-2">-</h1>
-                    <TextField
-                        sx={{ width: "100px" }}
-                        label="Unit"
-                        size="small"
-                        type="number"
-                        name="Unit"
-                        value={formData.Unit}
-                        onChange={handleChange}
-                        inputProps={{
-                            min: 1000,
-                            max: 2000,
-                            step: 1,
-                        }}
-                        error={(formData.Unit !== null && (formData.Unit < 1000 || formData.Unit > 2000))}
-                        helperText={(formData.Unit !== null && (formData.Unit < 1000 || formData.Unit > 2000)) ? 'Number must be between 1000 and 2000' : ''}
-                    />
-                </div>
-                <div className="my-4">
-                    <Button type="submit" color="success" variant="contained">Click to Pay</Button>
-                </div>
-            </form>
-            <div>
-                <h1>useState</h1>
-                <h1>{formData.Name}</h1>
-                <h1>{formData.Block}</h1>
-                <h1>{formData.Level}</h1>
-                <h1>{formData.Unit}</h1>
+        <form>
+            <div className="my-4">
+                <TextField
+                    label="Name"
+                    size="small"
+                    type="text"
+                    name="Name"
+                    value={formData.Name}
+                    onChange={handleChange}
+                />
             </div>
-        </>
-
+            <div className="flex flex-row items-center">
+                <TextField
+                    select
+                    sx={{ width: "100px" }}
+                    label="Block"
+                    size="small"
+                    type="number"
+                    name="Block"
+                    value={formData.Block}
+                    onChange={handleChange}
+                >
+                    <MenuItem value="69">69</MenuItem>
+                    <MenuItem value="70">70</MenuItem>
+                    <MenuItem value="71">71</MenuItem>
+                    <MenuItem value="72">72</MenuItem>
+                </TextField>
+                <h1 className="mx-2">-</h1>
+                <TextField
+                    select
+                    sx={{ width: "100px" }}
+                    label="Level"
+                    size="small"
+                    type="number"
+                    name="Level"
+                    value={formData.Level}
+                    onChange={handleChange}
+                >
+                    <MenuItem value="1">1</MenuItem>
+                    <MenuItem value="2">2</MenuItem>
+                    <MenuItem value="3">3</MenuItem>
+                    <MenuItem value="4">4</MenuItem>
+                    <MenuItem value="5">5</MenuItem>
+                </TextField>
+                <h1 className="mx-2">-</h1>
+                <TextField
+                    sx={{ width: "100px" }}
+                    label="Unit"
+                    size="small"
+                    type="number"
+                    name="Unit"
+                    value={formData.Unit}
+                    onChange={handleChange}
+                    inputProps={{
+                        min: 1000,
+                        max: 2000,
+                        step: 1,
+                    }}
+                    error={(formData.Unit !== null && (formData.Unit < 1000 || formData.Unit > 2000))}
+                    helperText={(formData.Unit !== null && (formData.Unit < 1000 || formData.Unit > 2000)) ? 'Number must be between 1000 and 2000' : ''}
+                />
+            </div>
+            <div className="my-4">
+                <Button color="success" variant="contained" onClick={goToPayment}>Click to Pay</Button>
+                <h1 className={`text-red-500 mt-1 ${filled ? "hidden" : ""}`}>Incomplete/Incorrect details!</h1>
+                <Modal
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <div className="flex flex-col justify-center items-center gap-y-4 w-full">
+                            <h1 className="text-xl font-bold">Scan and Pay via PayNow / Paylah!</h1>
+                            <h1 className="bg-orange-100 w-60 h-60 rounded-lg flex justify-center items-center">QR Code here</h1>
+                            <Button color="success" variant="contained" onClick={sendOrder}>Submit Order</Button>
+                        </div>
+                    </Box>
+                </Modal>
+            </div>
+        </form>
     )
 }

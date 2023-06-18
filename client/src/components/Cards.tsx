@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { productProps, orderProps } from '../types/mainTypes'
+import { ProductProps, OrderProps } from '../types/mainTypes'
 
-export default function Cards({ item, setAddedToCart }: { item: productProps, setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
+export default function Cards({ item, setAddedToCart }: { item: ProductProps, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 
     const [added, setAdded] = useState<boolean>(false)
     const [buttonText, setButtonText] = useState<string>("Add to Cart")

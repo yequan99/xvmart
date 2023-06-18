@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from 'react'
 import { Link } from "react-router-dom";
 import OrderItems from './OrderItems'
 import SubmitOrderForm from './SubmitOrderForm';
-import { orderProps } from "../types/mainTypes"
+import { OrderProps } from "../types/mainTypes"
 
-export default function Cart({cartItems, setAddedToCart}: { cartItems: orderProps[], setAddedToCart: Dispatch<SetStateAction<orderProps[]>> }) {
+export default function Cart({cartItems, setAddedToCart}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 
     const totalCost = Math.round(cartItems.reduce((accumulator, item) => accumulator + item.Price * item.Quantity, 0) * 10) / 10
 
@@ -34,9 +34,12 @@ export default function Cart({cartItems, setAddedToCart}: { cartItems: orderProp
                                 <h1>Total Amount: </h1>
                                 <h1>${totalCost}</h1>
                             </div>
-                            <div className="mt-4">
-                                <SubmitOrderForm />
-                            </div>
+                            {
+                                totalCost !== 0 &&
+                                <div className="mt-4">
+                                    <SubmitOrderForm cartItems={cartItems} />
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

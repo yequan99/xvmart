@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 
 import xvmartLogo from '../assets/images/xvmart.jpg';
-import { categoryProps } from '../types/mainTypes'
+import { CategoryProps } from '../types/mainTypes'
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,7 +11,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-export default function Navbar({ categories, setSelectedCategory, cartCount }: { categories: categoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>>, cartCount: number }) {
+export default function Navbar({ categories, setSelectedCategory, cartCount }: { categories: CategoryProps[], setSelectedCategory: Dispatch<SetStateAction<string>>, cartCount: number }) {
 
     const [category, setCategory] = useState("All")
 
