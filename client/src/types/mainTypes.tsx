@@ -17,11 +17,21 @@ export type CategoryProps = {
 
 export type OrderProps = {
     Name: string,
-    // Category: string,
     Price: number,
     Quantity: number,
     MaxQuantity: number,
     Description: string
+}
+
+export type SendOrderProps = {
+    Item: string,
+    Price: number,
+    Quantity: number,
+    Description: string,
+    Name: string,
+    Block: number | null,
+    Level: number | null,
+    Unit: number | null
 }
 
 export type UserFormProps = {

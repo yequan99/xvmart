@@ -39,11 +39,6 @@ export default function App() {
       ) : (
         <>
           <Navbar categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} />
-          {/* <div className="mt-24">
-            {addedToCart.map((item) => (
-                <p>{item.Name} / {item.Price} / {item.Quantity} </p>
-            ))}
-          </div> */}
           <Routes>
             <Route path="/" element={ <Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} /> } />
             <Route path="/cart" element={ <Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} /> } />

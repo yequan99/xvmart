@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react'
-import { UserFormProps, OrderProps } from '../types/mainTypes';
+import { UserFormProps, OrderProps, SendOrderProps } from '../types/mainTypes';
 import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
 
 const style = {
@@ -33,9 +33,40 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
         }
     }
 
-    const sendOrder = () => {
-        console.log(formData)
-        console.log(cartItems)
+    const sendOrder = async () => {
+        const sendOrder: SendOrderProps[] = []
+        cartItems.forEach((item) => {
+            if (item.Quantity > 0) {
+                const order: SendOrderProps = {
+                    Item: item.Name,
+                    Price: item.Price,
+                    Quantity: item.Quantity,
+                    Description: item.Description,
+                    Name: formData.Name,
+                    Block: formData.Block,
+                    Level: formData.Level,
+                    Unit: formData.Unit
+                }
+                sendOrder.push(order)
+            }
+        })
+        try {
+            const response = await fetch('/cart', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ sendOrder }),
+            });
+      
+            if (response.ok) {
+              console.log('Data sent successfully!');
+            } else {
+              console.error('Failed to send data!');
+            }
+          } catch (error) {
+            console.error('Network error:', error);
+          }
     }
 
     return (

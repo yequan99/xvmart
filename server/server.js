@@ -1,4 +1,6 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const firebase = require('firebase')
 require("dotenv").config();
 const app = express();
@@ -18,6 +20,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore()
+
+app.use(cors())
+app.use(bodyParser.json());
 
 app.get('/product', (req, res) => {
     (async() => {
@@ -53,12 +58,13 @@ app.get('/product', (req, res) => {
     })()
 })
 
-app.get("/api", (req, res) => {
-    res.json({ "users": ["userOne", "userTwo", "userThree", "userFour"]})
-})
-
-app.get("/hello", (req, res) => {
-    res.json({ message: "Hello from server!" })
+app.post('/cart', (req,res) => {
+    const data = req.body.sendOrder
+    console.log("received data:", data)
+    res.sendStatus(200)
+    data.forEach(function(element) {
+        db.collection("Orders").add(element)
+    })
 })
 
 app.listen(PORT, () => { console.log(`Server started on port ${PORT}`) })
