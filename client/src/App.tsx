@@ -4,6 +4,8 @@ import { ApiProps, OrderProps } from './types/mainTypes';
 import Cart from './components/Cart'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import Login from './components/Login'
+import Admin from './components/Admin'
 
 export default function App() {
 
@@ -42,6 +44,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={ <Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} /> } />
             <Route path="/cart" element={ <Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} /> } />
+            <Route path="/login" element={ <Login /> } />
+            <Route path="/admin" element={ <Admin /> } />
           </Routes>
         </>
 

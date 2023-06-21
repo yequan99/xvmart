@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react'
 import { UserFormProps, OrderProps, SendOrderProps } from '../types/mainTypes';
 import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -15,10 +16,11 @@ const style = {
 };
 
 export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]}) {
-
+    const navigate = useNavigate()
     const [formData, setFormData] = useState<UserFormProps>({Name: "", Block: null, Level: null, Unit: null})
     const [filled, setFilled] = useState(true)
     const [open, setOpen] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
@@ -34,6 +36,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
     }
 
     const sendOrder = async () => {
+        setDisabled(true)
         const sendOrder: SendOrderProps[] = []
         cartItems.forEach((item) => {
             if (item.Quantity > 0) {
@@ -45,7 +48,8 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                     Name: formData.Name,
                     Block: formData.Block,
                     Level: formData.Level,
-                    Unit: formData.Unit
+                    Unit: formData.Unit,
+                    Date: new Date().toLocaleString('en-US', { timeZone: 'Asia/Singapore' })
                 }
                 sendOrder.push(order)
             }
@@ -64,6 +68,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
             } else {
               console.error('Failed to send data!');
             }
+            setTimeout(() => navigate("/"), 3000)
           } catch (error) {
             console.error('Network error:', error);
           }
@@ -145,7 +150,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                         <div className="flex flex-col justify-center items-center gap-y-4 w-full">
                             <h1 className="text-xl font-bold">Scan and Pay via PayNow / Paylah!</h1>
                             <h1 className="bg-orange-100 w-60 h-60 rounded-lg flex justify-center items-center">QR Code here</h1>
-                            <Button color="success" variant="contained" onClick={sendOrder}>Submit Order</Button>
+                            <Button color="success" variant="contained" disabled={disabled} onClick={sendOrder}>Submit Order</Button>
                         </div>
                     </Box>
                 </Modal>

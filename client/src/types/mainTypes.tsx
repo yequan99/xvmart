@@ -31,7 +31,8 @@ export type SendOrderProps = {
     Name: string,
     Block: number | null,
     Level: number | null,
-    Unit: number | null
+    Unit: number | null,
+    Date: string
 }
 
 export type UserFormProps = {
