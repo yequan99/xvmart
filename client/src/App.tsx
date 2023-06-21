@@ -13,6 +13,8 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
   const [addedToCart, setAddedToCart] = useState<OrderProps[]>([])
 
+  console.log(process.env)
+
   useEffect(() => {
     fetch("/product").then(
       response => response.json()

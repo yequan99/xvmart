@@ -19,8 +19,8 @@ export default function Admin() {
                 // redirect to login page if not logged in
                 navigate("/login")
             }
-          });
-         
+        });
+        // eslint-disable-next-line
     }, [])
 
     return (
