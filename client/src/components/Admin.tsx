@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../firebase';
 
 export default function Admin() {
@@ -23,9 +23,19 @@ export default function Admin() {
         // eslint-disable-next-line
     }, [])
 
+    const SignOut = () => {
+        signOut(auth)
+            .then(() => {
+                navigate("/login")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <div className="container m-auto mt-24">
-            Hello
+            <div className="border-2 bg-slate-300 p-4 w-fit rounded-lg cursor-pointer" onClick={SignOut}>Sign Out</div>
         </div>
     )
 }

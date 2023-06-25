@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ApiProps, OrderProps } from './types/mainTypes';
 import Cart from './components/Cart'
-import Navbar from './components/Navbar'
+import Layout from './components/Layout'
 import Home from './components/Home'
 import Login from './components/Login'
 import Admin from './components/Admin'
@@ -41,16 +41,18 @@ export default function App() {
       {(typeof backendData?.product === 'undefined') ? (
         <p>Loading ...</p>
       ) : (
-        <>
-          <Navbar categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} />
+        <Router>
           <Routes>
-            <Route path="/" element={ <Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} /> } />
-            <Route path="/cart" element={ <Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} /> } />
+            <Route path="/" element={ <Layout categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} /> }>
+              <Route index element={ <Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} /> } />
+              <Route path="cart" element={ <Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} /> } />
+            </Route>
+          </Routes>
+          <Routes>
             <Route path="/login" element={ <Login /> } />
             <Route path="/admin" element={ <Admin /> } />
           </Routes>
-        </>
-
+        </Router>
       )}
     </div>
   );
