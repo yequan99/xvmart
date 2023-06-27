@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { OrderProps } from "../types/mainTypes"
+import { OrderProps } from "../../types/mainTypes"
 
 export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: OrderProps, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 

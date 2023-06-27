@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { Link } from "react-router-dom";
 import OrderItems from './OrderItems'
 import SubmitOrderForm from './SubmitOrderForm';
-import { OrderProps } from "../types/mainTypes"
+import { OrderProps } from "../../types/mainTypes"
 
 export default function Cart({cartItems, setAddedToCart}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 

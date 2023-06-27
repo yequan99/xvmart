@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import Cards from './Cards'
-import { ProductProps, OrderProps } from '../types/mainTypes'
+import { ProductProps, OrderProps } from '../../types/mainTypes'
 
 export default function Home({apiData, selectedCategory, setAddedToCart }: {apiData: ProductProps[], selectedCategory: string, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 

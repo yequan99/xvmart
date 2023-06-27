@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { ProductProps, OrderProps } from '../types/mainTypes'
+import { ProductProps, OrderProps } from '../../types/mainTypes'
 
 export default function Cards({ item, setAddedToCart }: { item: ProductProps, setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
 

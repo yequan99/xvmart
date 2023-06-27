@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Link } from "react-router-dom";
 
-import xvmartLogo from '../assets/images/xvmart.jpg';
-import { CategoryProps } from '../types/mainTypes'
+import xvmartLogo from '../../assets/images/xvmart.jpg';
+import { CategoryProps } from '../../types/mainTypes'
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';

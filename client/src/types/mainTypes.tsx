@@ -41,3 +41,15 @@ export type UserFormProps = {
     Level: number | null,
     Unit: number | null,
 }
+
+export type GetOrderProps = {
+    Name: string,
+    Block: string,
+    Level: string,
+    Unit: string,
+    Date: string,
+    Item: string,
+    Quantity: number,
+    Price: number,
+    Description: string
+}

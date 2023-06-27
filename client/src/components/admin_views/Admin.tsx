@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 
-export default function Admin() {
+import xvmartLogo from '../../assets/images/xvmart.jpg';
+import AdminPanel from './AdminPanel'
+import { ApiProps } from '../../types/mainTypes';
+
+export default function Admin({ apiData }: { apiData: ApiProps}) {
 
     const navigate = useNavigate()
 
@@ -34,8 +38,15 @@ export default function Admin() {
     }
 
     return (
-        <div className="container m-auto mt-24">
-            <div className="border-2 bg-slate-300 p-4 w-fit rounded-lg cursor-pointer" onClick={SignOut}>Sign Out</div>
+        <div className="container m-auto mt-4">
+            <div className="flex flex-row justify-between items-center">
+                {/* eslint-disable-next-line */}
+                <img className="h-16 w-48" src={xvmartLogo} />
+                <div className="flex items-center border-2 border-slate-400 bg-slate-300 p-2 w-fit h-10 rounded-lg cursor-pointer" onClick={SignOut}>Sign Out</div>
+            </div>
+            <div className="mt-4">
+                <AdminPanel apiData={apiData} />
+            </div>
         </div>
     )
 }

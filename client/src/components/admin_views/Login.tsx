@@ -1,8 +1,8 @@
 import { useState, FormEvent } from 'react'
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 import { useNavigate } from 'react-router-dom'
-import xvmartLogo from '../assets/images/xvmart.jpg';
+import xvmartLogo from '../../assets/images/xvmart.jpg';
 import { TextField, Button } from '@mui/material';
 
 export default function Login() {

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react'
-import { UserFormProps, OrderProps, SendOrderProps } from '../types/mainTypes';
+import { UserFormProps, OrderProps, SendOrderProps } from '../../types/mainTypes';
 import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 
@@ -94,7 +94,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                     size="small"
                     type="number"
                     name="Block"
-                    value={formData.Block}
+                    value={formData.Block === null ? '' : formData.Block}
                     onChange={handleChange}
                 >
                     <MenuItem value="69">69</MenuItem>
@@ -110,7 +110,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                     size="small"
                     type="number"
                     name="Level"
-                    value={formData.Level}
+                    value={formData.Level === null ? '' : formData.Level}
                     onChange={handleChange}
                 >
                     <MenuItem value="1">1</MenuItem>
@@ -126,7 +126,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                     size="small"
                     type="number"
                     name="Unit"
-                    value={formData.Unit}
+                    value={formData.Unit === null ? '' : formData.Unit}
                     onChange={handleChange}
                     inputProps={{
                         min: 1000,

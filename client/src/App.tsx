@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ApiProps, OrderProps } from './types/mainTypes';
-import Cart from './components/Cart'
-import Layout from './components/Layout'
-import Home from './components/Home'
-import Login from './components/Login'
-import Admin from './components/Admin'
+import Cart from './components/public_views/Cart'
+import Layout from './components/public_views/Layout'
+import Home from './components/public_views/Home'
+import Login from './components/admin_views/Login'
+import Admin from './components/admin_views/Admin'
 
 export default function App() {
 
   const [backendData, setBackendData] = useState<ApiProps | null>()
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
   const [addedToCart, setAddedToCart] = useState<OrderProps[]>([])
-
-  console.log(process.env)
 
   useEffect(() => {
     fetch("/product").then(
@@ -39,18 +37,16 @@ export default function App() {
   return (
     <div>
       {(typeof backendData?.product === 'undefined') ? (
-        <p>Loading ...</p>
+        <h1>Loading ...</h1>
       ) : (
         <Router>
           <Routes>
-            <Route path="/" element={ <Layout categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} /> }>
-              <Route index element={ <Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} /> } />
-              <Route path="cart" element={ <Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} /> } />
+            <Route path="/" element={<Layout categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} />}>
+              <Route index element={<Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} />} />
+              <Route path="/cart" element={<Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} />} />
             </Route>
-          </Routes>
-          <Routes>
-            <Route path="/login" element={ <Login /> } />
-            <Route path="/admin" element={ <Admin /> } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin apiData={backendData} />} />
           </Routes>
         </Router>
       )}
