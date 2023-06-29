@@ -69,9 +69,9 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
               console.error('Failed to send data!');
             }
             setTimeout(() => navigate("/"), 3000)
-          } catch (error) {
-            console.error('Network error:', error);
-          }
+        } catch (error) {
+        console.error('Network error:', error);
+        }
     }
 
     return (

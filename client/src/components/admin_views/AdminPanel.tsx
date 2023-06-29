@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
 import EditProducts from './EditProducts';
+import AddProducts from './AddProducts'
 import ViewOrders from './ViewOrders';
 import ChangeQR from './ChangeQR';
 import { ApiProps } from '../../types/mainTypes';
@@ -60,18 +61,24 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
         <Tab label="Edit Products" {...a11yProps(0)} />
-        <Tab label="View Orders" {...a11yProps(1)} />
-        <Tab label="Change QR Code" {...a11yProps(2)} />
+        <Tab label="Add Products" {...a11yProps(1)} />
+        <Tab label="View Orders" {...a11yProps(2)} />
+        <Tab label="Change QR Code" {...a11yProps(3)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
-        <EditProducts products={apiData.product} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <ViewOrders />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <ChangeQR />
-      </TabPanel>
+      <div className="w-full">
+        <TabPanel value={value} index={0}>
+          <EditProducts products={apiData.product} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <AddProducts categories={apiData.category} />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <ViewOrders />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <ChangeQR />
+        </TabPanel>
+      </div>
     </Box>
   );
 }
