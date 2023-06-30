@@ -67,7 +67,7 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
       </Tabs>
       <div className="w-full">
         <TabPanel value={value} index={0}>
-          <EditProducts products={apiData.product} />
+          <EditProducts apiData={apiData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <AddProducts categories={apiData.category} />

@@ -1,12 +1,12 @@
 import { useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ProductProps, CategoryProps } from '../../types/mainTypes'
-import { TextField, MenuItem, Button, Alert } from '@mui/material';
-import { AddProduct } from '../../hooks/postReq/AddProduct';
+import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
+import { AddProduct } from '../../hooks/AddProduct';
 
 export default function AddProducts({categories}: { categories: CategoryProps[] }) {
 
-    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: ""})
+    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: ""})
     const [submit, setSubmit] = useState<boolean>(false)
     const navigate = useNavigate()
     
@@ -92,9 +92,13 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                 <Button color="success" variant="contained" onClick={handleSubmit}>Add Product</Button>
             </form>
             <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                <Alert severity="success">Added {productDetail.Name}</Alert>
+                <Alert severity="success">
+                    <div className="flex justify-between">
+                        <h1>Added {productDetail.Name}. Redirecting you</h1>
+                        <CircularProgress />
+                    </div>
+                </Alert>
             </div>
-            
         </div>
     )
 }

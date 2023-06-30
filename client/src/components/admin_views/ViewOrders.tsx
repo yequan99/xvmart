@@ -1,21 +1,11 @@
-import { useState, useEffect } from 'react'
 import { GetOrderProps } from '../../types/mainTypes'
+import GetOrders from '../../hooks/GetOrders'
 
 export default function ViewOrders() {
 
-    // const [orders, setOrders] = useState<GetOrderProps[] | null>(null)
+    const orders: GetOrderProps[] = GetOrders()
 
-    // useEffect(() => {
-    //     fetch("http://127.0.0.1:3001/orders").then(
-    //         response => response.json()
-    //     ).then(
-    //         data => {
-    //             setOrders(data)
-    //         }
-    //     )
-    // }, [])
-
-    // console.log(orders)
+    console.log(orders)
 
     return (
         <div>

@@ -8,7 +8,8 @@ export type ProductProps = {
     Category: string,
     Price: number,
     Quantity: number,
-    Description: string
+    Description: string,
+    ID: string
 }
 
 export type CategoryProps = {

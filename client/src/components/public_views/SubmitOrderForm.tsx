@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react'
 import { UserFormProps, OrderProps, SendOrderProps } from '../../types/mainTypes';
 import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
+import { SendOrder } from '../../hooks/SendOrder';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -54,24 +55,7 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                 sendOrder.push(order)
             }
         })
-        try {
-            const response = await fetch('/cart', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ sendOrder }),
-            });
-      
-            if (response.ok) {
-              console.log('Data sent successfully!');
-            } else {
-              console.error('Failed to send data!');
-            }
-            setTimeout(() => navigate("/"), 3000)
-        } catch (error) {
-        console.error('Network error:', error);
-        }
+        SendOrder(sendOrder, navigate)
     }
 
     return (

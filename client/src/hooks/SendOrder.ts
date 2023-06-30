@@ -1,14 +1,13 @@
-import { ProductProps } from "../../types/mainTypes"
+import { SendOrderProps } from "../types/mainTypes";
 
-
-const AddProduct = async (productDetail: ProductProps, navigate: Function) => {
+const SendOrder = async (sendOrder: SendOrderProps[], navigate: Function) => {
     try {
-        const response = await fetch('/addProduct', {
+        const response = await fetch('/cart', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ productDetail }),
+          body: JSON.stringify({ sendOrder }),
         });
   
         if (response.ok) {
@@ -16,10 +15,10 @@ const AddProduct = async (productDetail: ProductProps, navigate: Function) => {
         } else {
           console.error('Failed to send data!');
         }
-        setTimeout(() => navigate("/admin"), 3000)
+        setTimeout(() => navigate("/"), 3000)
     } catch (error) {
         console.error('Network error:', error);
     }
 }
 
-export { AddProduct }
+export { SendOrder }

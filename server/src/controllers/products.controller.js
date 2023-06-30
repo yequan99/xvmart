@@ -7,23 +7,20 @@ async function get(req, res) {
         let category = []
 
         await db.collection("Product").get().then(querysnapshot => {
-            let docs = querysnapshot.docs
-
-            for (let doc of docs) {
+            querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name", "Category", "Price", "Quantity", "Description"]})
                 const output = JSON.parse(json)
+                output["ID"] = doc.id
                 product.push(output)
-            }
+            })
         })
 
         await db.collection("Category").get().then(querysnapshot => {
-            let docs = querysnapshot.docs
-
-            for (let doc of docs) {
+            querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name"]})
                 const output = JSON.parse(json)
                 category.push(output)
-            }
+            })
         })
 
         const productCategory = { "product": product, "category": category }
