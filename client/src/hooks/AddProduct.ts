@@ -1,7 +1,7 @@
 import { ProductProps } from "../types/mainTypes"
 
 
-const AddProduct = async (productDetail: ProductProps, navigate: Function) => {
+const AddProduct = async (productDetail: ProductProps) => {
   try {
       const response = await fetch('/addProduct', {
         method: 'POST',

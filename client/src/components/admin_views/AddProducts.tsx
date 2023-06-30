@@ -1,5 +1,4 @@
 import { useState, ChangeEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { ProductProps, CategoryProps } from '../../types/mainTypes'
 import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
 import { AddProduct } from '../../hooks/AddProduct';
@@ -8,7 +7,6 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
 
     const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: ""})
     const [submit, setSubmit] = useState<boolean>(false)
-    const navigate = useNavigate()
     
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setProductDetail({ ...productDetail, [event.target.name]: event.target.value })
@@ -16,7 +14,7 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
 
     const handleSubmit = () => {
         setSubmit(true)
-        AddProduct(productDetail, navigate)
+        AddProduct(productDetail)
     }
 
     return (

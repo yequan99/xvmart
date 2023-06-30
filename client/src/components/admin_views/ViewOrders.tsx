@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { GetOrderProps } from '../../types/mainTypes'
 import GetOrders from '../../hooks/GetOrders'
+import CompleteActionPopup from './CompleteActionPopup'
 
 export default function ViewOrders() {
 
@@ -9,6 +10,10 @@ export default function ViewOrders() {
     useEffect(() => {
         GetOrders(setOrder)
     }, [])
+
+    const CalculatePrice = (price: number, quantity: number) => {
+        return (Math.round(price * quantity * 10) / 10)
+    }
 
     return (
         <div>
@@ -23,19 +28,21 @@ export default function ViewOrders() {
                     <tr className="text-left uppercase bg-slate-200">
                         <th>Name</th>
                         <th>Unit</th>
-                        <th>Date</th>
+                        <th>Date (MM/DD/YYYY)</th>
                         <th>Order</th>
                         <th>Amount</th>
+                        <th className="text-center">Complete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {order.map((item,index) => (
-                        <tr key={index}>
+                        <tr key={index} className="bg-slate-50 hover:bg-slate-100">
                             <td>{item.Name}</td>
                             <td>{item.Block}-{item.Level}-{item.Unit}</td>
                             <td>{item.Date}</td>
-                            <td>hello</td>
-                            <td>1961</td>
+                            <td>{item.Quantity} x {item.Item} - {item.Description}</td>
+                            <td>${CalculatePrice(item.Price, item.Quantity)}</td>
+                            <td className="flex justify-center"><CompleteActionPopup order={item} /></td>
                         </tr>
                     ))}
                 </tbody>

@@ -6,13 +6,12 @@ async function get(req, res) {
         let orders = []
 
         await db.collection("Orders").get().then(querysnapshot => {
-            let docs = querysnapshot.docs
-
-            for (let doc of docs) {
+            querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name", "Block", "Level", "Unit", "Date", "Item", "Quantity", "Price", "Description"]})
                 const output = JSON.parse(json)
+                output["ID"] = doc.id
                 orders.push(output)
-            }
+            })
         })
 
         const orderList = { "orders": orders }

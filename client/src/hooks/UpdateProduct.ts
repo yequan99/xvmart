@@ -4,8 +4,6 @@ import { app } from '../firebase'
 
 const UpdateProduct = (item: ProductProps) => {
 
-    console.log(item)
-
     const db = getFirestore(app)
     const docRef = doc(db, "Product", item.ID)
     

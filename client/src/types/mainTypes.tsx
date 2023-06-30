@@ -52,5 +52,6 @@ export type GetOrderProps = {
     Item: string,
     Quantity: number,
     Price: number,
-    Description: string
+    Description: string,
+    ID: string
 }
