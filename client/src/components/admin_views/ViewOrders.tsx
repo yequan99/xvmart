@@ -1,11 +1,14 @@
+import { useState, useEffect } from 'react'
 import { GetOrderProps } from '../../types/mainTypes'
 import GetOrders from '../../hooks/GetOrders'
 
 export default function ViewOrders() {
 
-    const orders: GetOrderProps[] = GetOrders()
+    const [order, setOrder] = useState<GetOrderProps[]>([])
 
-    console.log(orders)
+    useEffect(() => {
+        GetOrders(setOrder)
+    }, [])
 
     return (
         <div>
@@ -15,6 +18,28 @@ export default function ViewOrders() {
                     of items available.
                 </h1>
             </div>
+            <table className="mt-4 table-auto w-full">
+                <thead>
+                    <tr className="text-left uppercase bg-slate-200">
+                        <th>Name</th>
+                        <th>Unit</th>
+                        <th>Date</th>
+                        <th>Order</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {order.map((item,index) => (
+                        <tr key={index}>
+                            <td>{item.Name}</td>
+                            <td>{item.Block}-{item.Level}-{item.Unit}</td>
+                            <td>{item.Date}</td>
+                            <td>hello</td>
+                            <td>1961</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }

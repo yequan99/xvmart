@@ -1,19 +1,8 @@
-import { useState, useEffect } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { GetOrderProps } from '../types/mainTypes'
 
-export default function GetOrders() {
-
-    const [orders, setOrders] = useState<GetOrderProps[]>([])
-
-    useEffect(() => {
-        fetch("/orders").then(
-            response => response.json()
-        ).then(
-            data => {
-                setOrders(data)
-            }
-        )
-    }, [])
-
-    return orders
+export default async function GetOrders(setOrders: Dispatch<SetStateAction<GetOrderProps[]>>) {
+    const response = await fetch("/orders")
+    const data = await response.json()
+    setOrders(data.orders)
 }

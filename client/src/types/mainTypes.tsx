@@ -1,6 +1,6 @@
 export type ApiProps = {
     product: ProductProps[],
-    category: CategoryProps[]
+    category: CategoryProps[],
 }
 
 export type ProductProps = {

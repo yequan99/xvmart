@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -43,7 +43,7 @@ function a11yProps(index: number) {
 }
 
 export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState<number>(0)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
