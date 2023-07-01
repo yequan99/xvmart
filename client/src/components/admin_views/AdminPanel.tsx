@@ -73,7 +73,7 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
           <AddProducts categories={apiData.category} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ViewOrders />
+          <ViewOrders products={apiData.product} />
         </TabPanel>
         <TabPanel value={value} index={3}>
           <ChangeQR />

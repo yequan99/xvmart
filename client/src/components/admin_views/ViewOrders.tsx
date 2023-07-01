@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { GetOrderProps } from '../../types/mainTypes'
+import { GetOrderProps, ProductProps } from '../../types/mainTypes'
 import GetOrders from '../../hooks/GetOrders'
 import CompleteActionPopup from './CompleteActionPopup'
 
-export default function ViewOrders() {
+export default function ViewOrders({ products }: { products: ProductProps[] }) {
 
     const [order, setOrder] = useState<GetOrderProps[]>([])
 
@@ -42,7 +42,7 @@ export default function ViewOrders() {
                             <td>{item.Date}</td>
                             <td>{item.Quantity} x {item.Item} - {item.Description}</td>
                             <td>${CalculatePrice(item.Price, item.Quantity)}</td>
-                            <td className="flex justify-center"><CompleteActionPopup order={item} /></td>
+                            <td className="flex justify-center"><CompleteActionPopup order={item} products={products} /></td>
                         </tr>
                     ))}
                 </tbody>
