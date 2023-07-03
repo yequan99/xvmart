@@ -1,23 +1,24 @@
 import { ProductProps } from "../types/mainTypes"
-import { getFirestore, doc, setDoc } from 'firebase/firestore'
-import { app } from '../firebase'
 
-const UpdateProduct = (item: ProductProps) => {
-
-    const db = getFirestore(app)
-    const docRef = doc(db, "Product", item.ID)
-    
-    const data = { Name: item.Name, Category: item.Category, Price: item.Price, Quantity: item.Quantity, Description: item.Description}
-    setDoc(docRef, data)
-        .then(docRef => {
-            console.log("Entire Document has been updated successfully");
-        })
-        .catch(error => {
-            console.log(error);
+const UpdateProduct = async (product: ProductProps) => {
+    try {
+        const response = await fetch('/updateProduct', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product }),
         })
 
-    setTimeout(() => window.location.reload(), 3000)
-    
+        if (response.ok) {
+            console.log("Data sent successfully!")
+        } else {
+            console.error("Failed to send data!")
+        }
+        setTimeout(() => window.location.reload(), 3000)
+    } catch (error) {
+        console.error("Network error:", error)
+    }
 }
 
 export { UpdateProduct }

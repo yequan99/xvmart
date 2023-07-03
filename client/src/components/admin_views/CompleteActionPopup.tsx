@@ -25,7 +25,7 @@ export default function CompleteActionPopup({order, products}: {order: GetOrderP
 
     const handleSubmit = () => {
         setSubmit(true)
-        CompleteOrders(order, products)
+        CompleteOrders(order)
     }
 
     return (
