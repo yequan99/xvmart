@@ -30,7 +30,8 @@ export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: O
         <div className="py-4 flex flex-row h-36 pl-4 items-center justify-between hover:bg-slate-50 rounded-lg">
             <div className="flex flex-row">
                 <div className="h-28 w-28 bg-orange-100 flex justify-center items-center rounded-lg">
-                    Image here
+                    {/* eslint-disable-next-line */}
+                    <img className="h-[80%]" src={cartItems.ImageURL} />
                 </div>
                 <div className="flex flex-col pl-8 gap-3 justify-center">
                     <div className="font-bold text-xl">

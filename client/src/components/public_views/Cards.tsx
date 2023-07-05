@@ -28,7 +28,9 @@ export default function Cards({ item, setAddedToCart }: { item: ProductProps, se
     return (
         <div className="h-76">
             <div className="rounded-md bg-orange-100 h-48 flex justify-center items-center">
-                Image here
+                {/* Image here */}
+                {/* eslint-disable-next-line */}
+                <img className="h-[80%]" src={item.ImageURL} />
             </div>
             <div className="relative h-28">
                 <div className="flex flex-row justify-between items-center">

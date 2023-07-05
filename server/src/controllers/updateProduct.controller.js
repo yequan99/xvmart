@@ -1,4 +1,4 @@
-const db = require('../configs/firebasConfig')
+const { db } = require('../configs/firebaseConfig')
 
 async function update(req,res) {
     try {

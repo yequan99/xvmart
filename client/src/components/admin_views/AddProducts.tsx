@@ -5,7 +5,7 @@ import { AddProduct } from '../../hooks/AddProduct';
 
 export default function AddProducts({categories}: { categories: CategoryProps[] }) {
 
-    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: ""})
+    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: "", PictureName: "", ImageURL: ""})
     const [submit, setSubmit] = useState<boolean>(false)
     
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -84,6 +84,17 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                         type="text"
                         name="Description"
                         value={productDetail.Description}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="my-4">
+                    <TextField
+                        sx={{ width: "200px" }}
+                        label="Picture Name"
+                        size="small"
+                        type="text"
+                        name="PictureName"
+                        value={productDetail.PictureName}
                         onChange={handleChange}
                     />
                 </div>

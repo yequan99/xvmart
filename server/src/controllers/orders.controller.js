@@ -1,5 +1,5 @@
 const orderedJSON = require("ordered-json")
-const db = require('../configs/firebasConfig')
+const { db } = require('../configs/firebaseConfig')
 
 async function get(req, res) {
     try {

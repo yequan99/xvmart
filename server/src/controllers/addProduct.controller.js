@@ -1,4 +1,4 @@
-const db = require('../configs/firebasConfig')
+const { db } = require('../configs/firebaseConfig')
 
 function post(req,res) {
     const data = req.body.productDetail

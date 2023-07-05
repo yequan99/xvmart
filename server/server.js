@@ -11,7 +11,6 @@ const addProductRouter = require('./src/routes/addProduct.route')
 const completeOrdersRouter = require('./src/routes/completeOrders.route')
 const updateProductRouter = require('./src/routes/updateProducts.route')
 
-
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({

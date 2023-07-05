@@ -9,7 +9,9 @@ export type ProductProps = {
     Price: number,
     Quantity: number,
     Description: string,
-    ID: string
+    ID: string,
+    PictureName: string,
+    ImageURL: string
 }
 
 export type CategoryProps = {
@@ -21,7 +23,8 @@ export type OrderProps = {
     Price: number,
     Quantity: number,
     MaxQuantity: number,
-    Description: string
+    Description: string,
+    ImageURL: string
 }
 
 export type SendOrderProps = {

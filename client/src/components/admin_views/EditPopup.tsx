@@ -18,7 +18,7 @@ const style = {
 
 export default function EditPopup({ item, categories }: {item: ProductProps, categories: CategoryProps[]}) {
 
-    const [itemDetail, setItemDetail] = useState<ProductProps>({Name: item.Name, Category: item.Category, Price: item.Price, Quantity: item.Quantity, Description: item.Name, ID: item.ID})
+    const [itemDetail, setItemDetail] = useState<ProductProps>({Name: item.Name, Category: item.Category, Price: item.Price, Quantity: item.Quantity, Description: item.Name, ID: item.ID, PictureName: item.PictureName, ImageURL: item.ImageURL})
     const [updated, setUpdated] = useState<boolean>(false)
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)

@@ -26,7 +26,7 @@ export default function App() {
   useEffect(() => {
     if (typeof backendData?.product != "undefined") {
       setAddedToCart(backendData.product.map((item) => (
-          { Name: item.Name, Price: item.Price, Quantity: 0, MaxQuantity: item.Quantity, Description: item.Description }
+          { Name: item.Name, Price: item.Price, Quantity: 0, MaxQuantity: item.Quantity, Description: item.Description, ImageURL: item.ImageURL }
       )))
     }
     // eslint-disable-next-line 
