@@ -1,9 +1,9 @@
-import { AddProductProps } from "../types/mainTypes"
+import { ProductProps } from "../types/mainTypes"
 
 
-const AddProduct = async (product: AddProductProps) => {
+const DeleteProduct = async (product: ProductProps) => {
   try {
-      const response = await fetch('/addProduct', {
+      const response = await fetch('/deleteProduct', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,4 +22,4 @@ const AddProduct = async (product: AddProductProps) => {
   }
 }
 
-export { AddProduct }
+export { DeleteProduct }

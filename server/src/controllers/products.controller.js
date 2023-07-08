@@ -20,18 +20,26 @@ async function get(req, res) {
             querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name"]})
                 const output = JSON.parse(json)
+                output["ID"] = doc.id
                 category.push(output)
             })
         })
 
         for (const item of product) {
-            const [files] = await bucket.getFiles({ prefix: 'products/' + item.Picture_Name })
+            try {
+                const [files] = await bucket.getFiles({ prefix: 'products/' + item.Picture_Name })
 
-            const downloadURL = await files[0].getSignedUrl({
-                action: 'read',
-                expires: '03-17-2025', // Set the desired expiration date
-            })
-            item["ImageURL"] = downloadURL[0]
+                const downloadURL = await files[0].getSignedUrl({
+                    action: 'read',
+                    expires: '03-17-2025', // Set the desired expiration date
+                })
+                item["ImageURL"] = downloadURL[0]
+            } catch (error) {
+                console.log("no photo")
+                console.log(item)
+                item["ImageURL"] = ""
+            }
+
         }
 
         const productCategory = { "product": product, "category": category }

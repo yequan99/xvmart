@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react'
-import { ProductProps, CategoryProps } from '../../types/mainTypes'
+import { ProductProps, CategoryProps, AddProductProps } from '../../types/mainTypes'
 import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
 import { AddProduct } from '../../hooks/AddProduct';
 
@@ -14,17 +14,25 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
 
     const handleSubmit = () => {
         setSubmit(true)
-        AddProduct(productDetail)
+        const product: AddProductProps = {
+            Name: productDetail.Name,
+            Category: productDetail.Category,
+            Price: productDetail.Price,
+            Quantity: productDetail.Quantity,
+            Description: productDetail.Description,
+            Picture_Name: productDetail.PictureName
+        }
+        AddProduct(product)
     }
 
     return (
         <div>
             <div className="bg-blue-100 py-2 px-4 w-full mb-4 rounded-lg flex justify-center items-center">
                 <h1>
-                    This page is for you to add new products.
+                    This page is for you to add new products. Picture name would be the name of the file. E.g. if the uploading file name is 'milo.jpeg', Picture Name would be 'milo'
                 </h1>
             </div>
-            <h1>Producy Details:</h1>
+            <h1>Product Details:</h1>
             <form>
                 <div className="my-4">
                     <TextField

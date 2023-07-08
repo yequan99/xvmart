@@ -1,7 +1,7 @@
 import { MdOutlineDownloadDone } from 'react-icons/md'
 import { useState } from 'react'
 import { Box, Modal, Button, Alert, CircularProgress } from '@mui/material'
-import { GetOrderProps, ProductProps } from '../../types/mainTypes'
+import { GetOrderProps } from '../../types/mainTypes'
 import { CompleteOrders } from '../../hooks/CompleteOrder'
 
 const style = {
@@ -16,7 +16,7 @@ const style = {
     p: 4,
 }
 
-export default function CompleteActionPopup({order, products}: {order: GetOrderProps, products: ProductProps[]}) {
+export default function ConfirmOrderCompletion({order}: {order: GetOrderProps}) {
 
     const [submit, setSubmit] = useState<boolean>(false)
     const [open, setOpen] = useState(false)

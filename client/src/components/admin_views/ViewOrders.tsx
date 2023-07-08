@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { GetOrderProps, ProductProps } from '../../types/mainTypes'
 import GetOrders from '../../hooks/GetOrders'
-import CompleteActionPopup from './CompleteActionPopup'
+import ConfirmOrderCompletion from './ConfirmOrderCompletion'
 
 export default function ViewOrders({ products }: { products: ProductProps[] }) {
 
@@ -42,7 +42,7 @@ export default function ViewOrders({ products }: { products: ProductProps[] }) {
                             <td>{item.Date}</td>
                             <td>{item.Quantity} x {item.Item} - {item.Description}</td>
                             <td>${CalculatePrice(item.Price, item.Quantity)}</td>
-                            <td className="flex justify-center"><CompleteActionPopup order={item} products={products} /></td>
+                            <td className="flex justify-center pt-2"><ConfirmOrderCompletion order={item} /></td>
                         </tr>
                     ))}
                 </tbody>

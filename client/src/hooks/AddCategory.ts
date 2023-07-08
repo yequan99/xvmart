@@ -1,14 +1,14 @@
-import { AddProductProps } from "../types/mainTypes"
+import { CategoryProps } from "../types/mainTypes"
 
 
-const AddProduct = async (product: AddProductProps) => {
+const AddCategory = async (category: CategoryProps) => {
   try {
-      const response = await fetch('/addProduct', {
+      const response = await fetch('/addCategory', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ product }),
+        body: JSON.stringify({ category }),
       });
 
       if (response.ok) {
@@ -22,4 +22,4 @@ const AddProduct = async (product: AddProductProps) => {
   }
 }
 
-export { AddProduct }
+export { AddCategory }

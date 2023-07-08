@@ -14,8 +14,18 @@ export type ProductProps = {
     ImageURL: string
 }
 
+export type AddProductProps = {
+    Name: string,
+    Category: string,
+    Price: number,
+    Quantity: number,
+    Description: string,
+    Picture_Name: string,
+}
+
 export type CategoryProps = {
-    Name: string
+    Name: string,
+    ID: string
 }
 
 export type OrderProps = {

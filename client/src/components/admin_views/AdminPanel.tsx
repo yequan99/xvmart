@@ -7,6 +7,8 @@ import EditProducts from './EditProducts';
 import AddProducts from './AddProducts'
 import ViewOrders from './ViewOrders';
 import ChangeQR from './ChangeQR';
+import AddCategories from './AddCategories';
+import EditCategories from './EditCategories';
 import { ApiProps } from '../../types/mainTypes';
 
 interface TabPanelProps {
@@ -62,8 +64,10 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
       >
         <Tab label="Edit Products" {...a11yProps(0)} />
         <Tab label="Add Products" {...a11yProps(1)} />
-        <Tab label="View Orders" {...a11yProps(2)} />
-        <Tab label="Change QR Code" {...a11yProps(3)} />
+        <Tab label="Edit Categories" {...a11yProps(2)} />
+        <Tab label="Add Categories" {...a11yProps(3)} />
+        <Tab label="View Orders" {...a11yProps(4)} />
+        <Tab label="Change QR Code" {...a11yProps(5)} />
       </Tabs>
       <div className="w-full">
         <TabPanel value={value} index={0}>
@@ -73,9 +77,15 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
           <AddProducts categories={apiData.category} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <ViewOrders products={apiData.product} />
+          <EditCategories categories={apiData.category} />
         </TabPanel>
         <TabPanel value={value} index={3}>
+          <AddCategories />
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          <ViewOrders products={apiData.product} />
+        </TabPanel>
+        <TabPanel value={value} index={5}>
           <ChangeQR />
         </TabPanel>
       </div>
