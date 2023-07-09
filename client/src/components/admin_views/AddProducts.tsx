@@ -3,12 +3,11 @@ import { ProductProps, CategoryProps, AddProductProps } from '../../types/mainTy
 import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
 import { AddProduct } from '../../hooks/AddProduct';
 import { AiFillDelete } from 'react-icons/ai'
-import { storage } from '../../firebase'
 import { getStorage, ref, uploadBytes } from "firebase/storage"
 
 export default function AddProducts({categories}: { categories: CategoryProps[] }) {
 
-    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: "", PictureName: "", ImageURL: ""})
+    const [productDetail, setProductDetail] = useState<ProductProps>({Name: "", Category: "", Price: 0, Quantity: 0, Description: "", ID: "", Picture_Name: "", ImageURL: ""})
     const [submit, setSubmit] = useState<boolean>(false)
     const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
     const [filled, setFilled] = useState<boolean>(true)
@@ -18,7 +17,7 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
     }
 
     const handleSubmit = () => {
-        if (productDetail.Name === "" || productDetail.Category === "" || productDetail.Price === 0 || productDetail.Quantity === 0 || productDetail.Description === "" || productDetail.PictureName === "" || selectedFile === undefined) {
+        if (productDetail.Name === "" || productDetail.Category === "" || productDetail.Price === 0 || productDetail.Quantity === 0 || productDetail.Description === "" || productDetail.Picture_Name === "" || selectedFile === undefined) {
             setFilled(false)
         }
         else {
@@ -30,12 +29,12 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                 Price: productDetail.Price,
                 Quantity: productDetail.Quantity,
                 Description: productDetail.Description,
-                Picture_Name: productDetail.PictureName
+                Picture_Name: productDetail.Picture_Name
             }
             AddProduct(product)
 
             const storage = getStorage()
-            const imageRef = ref(storage, `products/${productDetail.PictureName}.jpeg`)
+            const imageRef = ref(storage, `products/${productDetail.Picture_Name}`)
             const metadata = {
                 contentType: 'image/jpeg',
             }
@@ -127,7 +126,7 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                         size="small"
                         type="text"
                         name="PictureName"
-                        value={productDetail.PictureName}
+                        value={productDetail.Picture_Name}
                         onChange={handleChange}
                     />
                 </div>

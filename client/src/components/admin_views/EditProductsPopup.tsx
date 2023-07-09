@@ -3,6 +3,8 @@ import { useState, ChangeEvent } from 'react'
 import { CategoryProps, ProductProps } from '../../types/mainTypes'
 import { Box, Modal, TextField, Button, MenuItem, Alert, CircularProgress } from '@mui/material'
 import { UpdateProduct } from '../../hooks/UpdateProduct'
+import { AiFillDelete } from 'react-icons/ai'
+import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -18,7 +20,8 @@ const style = {
 
 export default function EditProductsPopup({ item, categories }: {item: ProductProps, categories: CategoryProps[]}) {
 
-    const [itemDetail, setItemDetail] = useState<ProductProps>({Name: item.Name, Category: item.Category, Price: item.Price, Quantity: item.Quantity, Description: item.Name, ID: item.ID, PictureName: item.PictureName, ImageURL: item.ImageURL})
+    const [itemDetail, setItemDetail] = useState<ProductProps>({Name: item.Name, Category: item.Category, Price: item.Price, Quantity: item.Quantity, Description: item.Name, ID: item.ID, Picture_Name: item.Picture_Name, ImageURL: item.ImageURL})
+    const [image, setImage] = useState<File | undefined>(undefined)
     const [updated, setUpdated] = useState<boolean>(false)
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
@@ -28,7 +31,33 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
         setItemDetail({ ...itemDetail, [event.target.name]: event.target.value })
     }
 
+    const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files && event.target.files.length > 0) {
+            setImage(event.target.files[0]);
+        }
+    }
+
     const handleSubmit = () => {
+        if (image !== undefined) {
+            const storage = getStorage()
+
+            // deleting old image
+            const deleteRef = ref(storage, `products/${item.Picture_Name}`)
+            deleteObject(deleteRef).then(() => {
+                console.log("Deleted old image!")
+            }).catch((error) => {
+                console.error("Error deleting old image: ", error)
+            })
+
+            // add new qr code
+            const imageRef = ref(storage, `products/${item.Picture_Name}`)
+            const metadata = {
+                contentType: 'image/jpeg',
+            }
+
+            const uploadTask = uploadBytes(imageRef, image, metadata)
+        }
+
         UpdateProduct(itemDetail)
         setUpdated(true)
     }
@@ -45,6 +74,7 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    {item.Picture_Name}
                     <h1 className="font-bold uppercase" id="modal-modal-title">Edit item details</h1>
                     <div className="mt-2" id="modal-modal-description">
                         <form>
@@ -108,6 +138,20 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
                                     value={itemDetail.Description}
                                     onChange={handleChange}
                                 />
+                            </div>
+                            <h1 className="py-2">Update image only if required</h1>
+                            <Button variant="contained" component="label">
+                                Upload Image
+                                <input hidden accept="image/*" type="file" name="image" onChange={handleFileSelect} />
+                            </Button>
+                            <div className="flex flex-row items-center pb-2">
+                                {!image?.name && <span className="pl-4">Choose file to upload</span>}
+                                {image?.name && (
+                                    <>
+                                        <span className="px-4"> {image?.name}</span>
+                                        <AiFillDelete className="hover:cursor-pointer" onClick={() => setImage(undefined)} />
+                                    </>
+                                )}
                             </div>
                             <Button color="success" variant="contained" onClick={handleSubmit}>Update Product</Button>
                         </form>

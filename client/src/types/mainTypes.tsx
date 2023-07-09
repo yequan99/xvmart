@@ -11,7 +11,7 @@ export type ProductProps = {
     Quantity: number,
     Description: string,
     ID: string,
-    PictureName: string,
+    Picture_Name: string,
     ImageURL: string
 }
 
