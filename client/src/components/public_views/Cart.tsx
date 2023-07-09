@@ -4,7 +4,7 @@ import OrderItems from './OrderItems'
 import SubmitOrderForm from './SubmitOrderForm';
 import { OrderProps } from "../../types/mainTypes"
 
-export default function Cart({cartItems, setAddedToCart}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>> }) {
+export default function Cart({cartItems, setAddedToCart, qrcode}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>>, qrcode: string }) {
 
     const totalCost = Math.round(cartItems.reduce((accumulator, item) => accumulator + item.Price * item.Quantity, 0) * 10) / 10
 
@@ -37,7 +37,7 @@ export default function Cart({cartItems, setAddedToCart}: { cartItems: OrderProp
                             {
                                 totalCost !== 0 &&
                                 <div className="mt-4">
-                                    <SubmitOrderForm cartItems={cartItems} />
+                                    <SubmitOrderForm cartItems={cartItems} qrcode={qrcode} />
                                 </div>
                             }
                         </div>

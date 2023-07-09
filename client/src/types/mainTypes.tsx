@@ -1,6 +1,7 @@
 export type ApiProps = {
     product: ProductProps[],
     category: CategoryProps[],
+    qrcode: string
 }
 
 export type ProductProps = {

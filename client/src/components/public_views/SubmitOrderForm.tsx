@@ -16,7 +16,7 @@ const style = {
     p: 4,
 };
 
-export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]}) {
+export default function SubmitOrderForm({cartItems, qrcode} : { cartItems: OrderProps[], qrcode: string }) {
     const navigate = useNavigate()
     const [formData, setFormData] = useState<UserFormProps>({Name: "", Block: null, Level: null, Unit: null})
     const [filled, setFilled] = useState(true)
@@ -133,7 +133,11 @@ export default function SubmitOrderForm({cartItems} : {cartItems: OrderProps[]})
                     <Box sx={style}>
                         <div className="flex flex-col justify-center items-center gap-y-4 w-full">
                             <h1 className="text-xl font-bold">Scan and Pay via PayNow / Paylah!</h1>
-                            <h1 className="bg-orange-100 w-60 h-60 rounded-lg flex justify-center items-center">QR Code here</h1>
+                            <div className="rounded-md bg-orange-100 h-48 flex justify-center items-center">
+                                {/* Image here */}
+                                {/* eslint-disable-next-line */}
+                                <img className="h-[80%]" src={qrcode} />
+                             </div>
                             <Button color="success" variant="contained" disabled={disabled} onClick={sendOrder}>Submit Order</Button>
                         </div>
                     </Box>
