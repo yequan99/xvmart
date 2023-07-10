@@ -2,6 +2,7 @@ export type ApiProps = {
     product: ProductProps[],
     category: CategoryProps[],
     qrcode: string
+    xvmart: string
 }
 
 export type ProductProps = {

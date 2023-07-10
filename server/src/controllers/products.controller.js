@@ -55,7 +55,21 @@ async function get(req, res) {
             console.log("No QR Code")
         }
 
-        const productCategory = { "product": product, "category": category, "qrcode": qrcode }
+        var hallxvpic = ""
+
+        try {
+            const [files] = await bucket.getFiles({ prefix: 'hallxv/' + 'hallxvpic' })
+
+            const qrcodeURL = await files[0].getSignedUrl({
+                action: 'read',
+                expires: '03-17-2025',
+            })
+            hallxvpic = qrcodeURL[0]
+        } catch (error) {
+            console.log("No XV Mart pic")
+        }
+
+        const productCategory = { "product": product, "category": category, "qrcode": qrcode, "xvmart": hallxvpic }
         return res.status(200).send(productCategory)
     } catch (error) {
         return res.status(500).send(error)
