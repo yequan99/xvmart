@@ -27,26 +27,26 @@ export default function OrderItems({ cartItems, setAddedToCart }: { cartItems: O
     }
 
     return (
-        <div className="py-4 flex flex-row h-36 pl-4 items-center justify-between hover:bg-slate-50 rounded-lg">
-            <div className="flex flex-row">
+        <div className="py-4 flex flex-row w-full h-36 pl-4 items-center justify-between hover:bg-slate-50 rounded-lg">
+            <div className="flex flex-row w-[75%]">
                 <div className="h-28 w-28 bg-orange-100 flex justify-center items-center rounded-lg">
                     {/* eslint-disable-next-line */}
                     <img className="h-[80%]" src={cartItems.ImageURL} />
                 </div>
-                <div className="flex flex-col pl-8 gap-3 justify-center">
-                    <div className="font-bold text-xl">
+                <div className="flex flex-col pl-4 lg:pl-8 w-[50%] gap-3 justify-center">
+                    <div className="font-bold text-md lg:text-xl">
                         {cartItems.Name}
                     </div>
-                    <div className="text-sm italic text-gray-500">
+                    <div className="text-xs lg:text-sm italic text-gray-500">
                         {cartItems.Description}
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col justify-center gap-3 pr-4 items-center">
-                <div className="font-bold">
+            <div className="flex flex-col justify-center gap-3 pr-2 items-center">
+                <div className="font-bold text-md">
                     ${cartItems.Price}
                 </div>
-                <div className="border-2 border-slate-300 rounded-lg flex justify-between w-24">
+                <div className="border-2 border-slate-300 rounded-lg flex justify-between w-16 lg:w-24">
                     <h1 className="pl-2 cursor-pointer" onClick={decrementCounter}>-</h1>
                     <h1>{quantity}</h1>
                     <h1 className="pr-2 cursor-pointer" onClick={incrementCounter}>+</h1>

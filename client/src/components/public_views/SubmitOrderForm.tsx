@@ -9,7 +9,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
+    maxWidth: 'auto',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -22,6 +22,7 @@ export default function SubmitOrderForm({cartItems, qrcode} : { cartItems: Order
     const [filled, setFilled] = useState(true)
     const [open, setOpen] = useState(false)
     const [disabled, setDisabled] = useState(false)
+    const number = 98765432
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
@@ -131,12 +132,16 @@ export default function SubmitOrderForm({cartItems, qrcode} : { cartItems: Order
                     aria-describedby="modal-modal-description"
                 >
                     <Box sx={style}>
-                        <div className="flex flex-col justify-center items-center gap-y-4 w-full">
+                        <div className="flex flex-col justify-center items-center lg:gap-y-4 w-full">
                             <h1 className="text-xl font-bold">Scan and Pay via PayNow / Paylah!</h1>
-                            <div className="rounded-md bg-orange-100 h-48 flex justify-center items-center">
-                                {/* Image here */}
+                            <div className="rounded-md h-48 flex justify-center items-center">
+                                {qrcode === "" && <h1>Cannot retrieve QR Code, please contact Hall XV Council</h1>}
                                 {/* eslint-disable-next-line */}
                                 <img className="h-[80%]" src={qrcode} />
+                             </div>
+                             <div className="flex flex-col justify-center items-center pb-2">
+                                <h1 className="text-sm lg:text-lg">Or pay to:</h1>
+                                <h1 className="text-sm lg:text-lg">{number}</h1>
                              </div>
                             <Button color="success" variant="contained" disabled={disabled} onClick={sendOrder}>Submit Order</Button>
                         </div>

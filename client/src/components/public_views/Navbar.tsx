@@ -21,14 +21,14 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
     }
 
     return (
-        <div className="fixed top-0 w-full z-50 bg-white">
-            <div className="flex flex-row container m-auto mt-4 items-center justify-between">
+        <div className="fixed top-0 w-full z-10 bg-white">
+            <div className="flex flex-row container m-auto items-center justify-between pl-2 md:pl-0 pr-6 md:px-0">
                 <div className="flex items-center justify-center">
                     <Link to="/">
                         {/* eslint-disable-next-line */}
-                        <img className="h-16 w-48" src={xvmartLogo} />
+                        <img className="md:h-16 md:w-48 h-12 w-36" src={xvmartLogo} />
                     </Link>
-                    <div className="pl-10 pt-2">
+                    <div className="hidden pt-2 pl-10 sm:block">
                         <FormControl sx={{ minWidth: 160 }}>
                             <InputLabel id="demo-simple-select-label">Categories</InputLabel>
                             <Select
