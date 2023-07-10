@@ -1,11 +1,14 @@
 import { useState, ChangeEvent } from 'react'
-import { Button, Alert, CircularProgress } from '@mui/material'
+import { Button, Alert, CircularProgress, TextField, Divider } from '@mui/material'
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
+import { UpdatePhone } from '../../hooks/UpdatePhone'
+import { PhoneProps } from '../../types/mainTypes'
 
-export default function ChangeQR() {
+export default function ChangeQR({phoneNumber}: {phoneNumber: PhoneProps}) {
 
     const [image, setImage] = useState<File | undefined>(undefined)
+    const [phone, setPhone] = useState<PhoneProps>({PhoneNumber: "", ID: phoneNumber.ID})
     const [uploaded, setUploaded] = useState<boolean>(true)
     const [submit, setSubmit] = useState<boolean>(false)
 
@@ -15,13 +18,19 @@ export default function ChangeQR() {
         }
     }
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setPhone({ ...phone, [event.target.name]: event.target.value })
+    }
+
     const handleSubmit = () => {
-        if (image === undefined) {
+        if (image === undefined || phone.PhoneNumber.length !== 8) {
             setUploaded(false)
         }
         else {
             setUploaded(true)
             setSubmit(true)
+
+            UpdatePhone(phone)
 
             const storage = getStorage()
 
@@ -39,6 +48,7 @@ export default function ChangeQR() {
                 contentType: 'image/jpeg',
             }
 
+            // eslint-disable-next-line
             const uploadTask = uploadBytes(imageRef, image, metadata)
 
             setTimeout(() => window.location.reload(), 3000)
@@ -49,7 +59,7 @@ export default function ChangeQR() {
         <div>
             <div className="bg-blue-100 py-2 px-4 mb-2 rounded-lg flex justify-center items-center">
                 <h1>
-                    This page is for you to change the Paylah/Paynow QR code whenever there is a handover. Please name your file 'qrcode' if not it will not work. E.g. qrcode.png
+                    This page is for you to change the Paylah/Paynow QR code and phone number whenever there is a handover. Please name your file 'qrcode' if not it will not work. E.g. qrcode.png
                 </h1>
             </div>
             <h1 className="py-4">Upload the new qrcode</h1>
@@ -66,14 +76,27 @@ export default function ChangeQR() {
                     </>
                 )}
             </div>
+            <Divider />
+            <h1 className="py-4">Upload new Paynow/Paylah number</h1>
             <div className="my-4">
-                <Button color="success" variant="contained" onClick={handleSubmit}>Replace QR Code</Button>
-                <h1 className={`text-red-500 mt-1 ${uploaded ? "hidden" : ""}`}>No image uploaded!</h1>
+                <TextField
+                    sx={{ width: "200px" }}
+                    label="Phone number"
+                    size="small"
+                    type="text"
+                    name="PhoneNumber"
+                    value={phone.PhoneNumber}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className="my-4">
+                <Button color="success" variant="contained" onClick={handleSubmit}>Confirm update</Button>
+                <h1 className={`text-red-500 mt-1 ${uploaded ? "hidden" : ""}`}>No image uploaded/ Invalid phone number!</h1>
             </div>
             <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
                 <Alert severity="success">
                     <div className="flex justify-between">
-                        <h1>Replaced QR Code. Redirecting you</h1>
+                        <h1>Updated QR Code and phone number. Redirecting you</h1>
                         <CircularProgress />
                     </div>
                 </Alert>

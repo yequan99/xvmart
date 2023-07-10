@@ -1,8 +1,9 @@
 export type ApiProps = {
     product: ProductProps[],
     category: CategoryProps[],
-    qrcode: string
-    xvmart: string
+    qrcode: string,
+    xvmart: string,
+    number: PhoneProps
 }
 
 export type ProductProps = {
@@ -68,5 +69,10 @@ export type GetOrderProps = {
     Quantity: number,
     Price: number,
     Description: string,
+    ID: string
+}
+
+export type PhoneProps = {
+    PhoneNumber: string,
     ID: string
 }

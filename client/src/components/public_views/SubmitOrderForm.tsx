@@ -16,13 +16,12 @@ const style = {
     p: 4,
 };
 
-export default function SubmitOrderForm({cartItems, qrcode} : { cartItems: OrderProps[], qrcode: string }) {
+export default function SubmitOrderForm({cartItems, qrcode, phoneNumber} : { cartItems: OrderProps[], qrcode: string, phoneNumber: string }) {
     const navigate = useNavigate()
     const [formData, setFormData] = useState<UserFormProps>({Name: "", Block: null, Level: null, Unit: null})
     const [filled, setFilled] = useState(true)
     const [open, setOpen] = useState(false)
     const [disabled, setDisabled] = useState(false)
-    const number = 98765432
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
@@ -141,7 +140,7 @@ export default function SubmitOrderForm({cartItems, qrcode} : { cartItems: Order
                              </div>
                              <div className="flex flex-col justify-center items-center pb-2">
                                 <h1 className="text-sm lg:text-lg">Or pay to:</h1>
-                                <h1 className="text-sm lg:text-lg">{number}</h1>
+                                <h1 className="text-sm lg:text-lg">{phoneNumber}</h1>
                              </div>
                             <Button color="success" variant="contained" disabled={disabled} onClick={sendOrder}>Submit Order</Button>
                         </div>

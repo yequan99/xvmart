@@ -86,7 +86,7 @@ export default function AdminPanel({ apiData }: { apiData: ApiProps }) {
           <ViewOrders products={apiData.product} />
         </TabPanel>
         <TabPanel value={value} index={5}>
-          <ChangeQR />
+          <ChangeQR phoneNumber={apiData.number} />
         </TabPanel>
       </div>
     </Box>

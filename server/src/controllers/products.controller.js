@@ -25,6 +25,17 @@ async function get(req, res) {
             })
         })
 
+        var phoneNumber = {}
+
+        await db.collection("Number").get().then(querysnapshot => {
+            querysnapshot.forEach((doc) => {
+                const json = orderedJSON.stringify(doc.data(), {order:["PhoneNumber"]})
+                const output = JSON.parse(json)
+                output["ID"] = doc.id
+                phoneNumber = output
+            })
+        })
+
         for (const item of product) {
             try {
                 const [files] = await bucket.getFiles({ prefix: 'products/' + item.Picture_Name })
@@ -69,7 +80,7 @@ async function get(req, res) {
             console.log("No XV Mart pic")
         }
 
-        const productCategory = { "product": product, "category": category, "qrcode": qrcode, "xvmart": hallxvpic }
+        const productCategory = { "product": product, "category": category, "qrcode": qrcode, "xvmart": hallxvpic, "number": phoneNumber }
         return res.status(200).send(productCategory)
     } catch (error) {
         return res.status(500).send(error)

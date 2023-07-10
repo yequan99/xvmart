@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from 'react'
 import { Link } from "react-router-dom";
 import OrderItems from './OrderItems'
 import SubmitOrderForm from './SubmitOrderForm';
-import { OrderProps } from "../../types/mainTypes"
+import { OrderProps, PhoneProps } from "../../types/mainTypes"
 
-export default function Cart({cartItems, setAddedToCart, qrcode}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>>, qrcode: string }) {
+export default function Cart({cartItems, setAddedToCart, qrcode, phoneNumber}: { cartItems: OrderProps[], setAddedToCart: Dispatch<SetStateAction<OrderProps[]>>, qrcode: string, phoneNumber: PhoneProps }) {
 
     const totalCost = Math.round(cartItems.reduce((accumulator, item) => accumulator + item.Price * item.Quantity, 0) * 10) / 10
 
@@ -37,7 +37,7 @@ export default function Cart({cartItems, setAddedToCart, qrcode}: { cartItems: O
                             {
                                 totalCost !== 0 &&
                                 <div className="mt-4">
-                                    <SubmitOrderForm cartItems={cartItems} qrcode={qrcode} />
+                                    <SubmitOrderForm cartItems={cartItems} qrcode={qrcode} phoneNumber={phoneNumber.PhoneNumber} />
                                 </div>
                             }
                         </div>

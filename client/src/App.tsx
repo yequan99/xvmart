@@ -43,7 +43,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Layout categories={backendData.category} setSelectedCategory={setSelectedCategory} cartCount={cartCount} />}>
               <Route index element={<Home apiData={backendData.product} selectedCategory={selectedCategory} setAddedToCart={setAddedToCart} xvmartpic={backendData.xvmart} />} />
-              <Route path="/cart" element={<Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} qrcode={backendData.qrcode} />} />
+              <Route path="/cart" element={<Cart cartItems={addedToCart} setAddedToCart={setAddedToCart} qrcode={backendData.qrcode} phoneNumber={backendData.number} />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin apiData={backendData} />} />

@@ -14,6 +14,7 @@ const deleteProductRouter = require('./src/routes/deleteProduct.route')
 const addCategoryRouter = require('./src/routes/addCategory.route')
 const updateCategoryRouter = require('./src/routes/updateCategory.route')
 const deleteCategoryRouter = require('./src/routes/deleteCategory.route')
+const updatePhoneRouter = require('./src/routes/updatePhone.route')
 
 app.use(bodyParser.json())
 app.use(
@@ -32,5 +33,6 @@ app.use('/deleteProduct', deleteProductRouter)
 app.use('/addCategory', addCategoryRouter)
 app.use('/updateCategory', updateCategoryRouter)
 app.use('/deleteCategory', deleteCategoryRouter)
+app.use('/updatePhone', updatePhoneRouter)
 
 app.listen(PORT, () => { console.log(`Server started on port ${PORT}`) })
