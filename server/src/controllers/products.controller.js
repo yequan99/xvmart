@@ -16,7 +16,7 @@ async function get(req, res) {
             })
         })
 
-        await db.collection("Category").get().then(querysnapshot => {
+        await db.collection("Category").orderBy('Name').get().then(querysnapshot => {
             querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name"]})
                 const output = JSON.parse(json)

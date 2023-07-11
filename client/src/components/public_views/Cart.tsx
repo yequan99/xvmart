@@ -32,7 +32,7 @@ export default function Cart({cartItems, setAddedToCart, qrcode, phoneNumber}: {
                             <h1 className="font-bold text-lg lg:text-xl">Order Summary</h1>
                             <div className="flex justify-between pt-4">
                                 <h1>Total Amount: </h1>
-                                <h1>${totalCost}</h1>
+                                <h1>${totalCost.toFixed(2)}</h1>
                             </div>
                             {
                                 totalCost !== 0 &&
