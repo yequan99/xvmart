@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from 'react'
 import { ProductProps, CategoryProps, AddProductProps } from '../../types/mainTypes'
 import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
 import { AddProduct } from '../../hooks/AddProduct';
+import Redirect from './reusable/Redirect';
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes } from "firebase/storage"
 
@@ -125,7 +126,7 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                         label="Picture Name"
                         size="small"
                         type="text"
-                        name="PictureName"
+                        name="Picture_Name"
                         value={productDetail.Picture_Name}
                         onChange={handleChange}
                     />
@@ -149,12 +150,7 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
                 </div>
             </form>
             <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                <Alert severity="success">
-                    <div className="flex justify-between">
-                        <h1>Added {productDetail.Name}. Redirecting you</h1>
-                        <CircularProgress />
-                    </div>
-                </Alert>
+                <Redirect item={productDetail.Name} />
             </div>
         </div>
     )

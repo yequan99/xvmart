@@ -31,6 +31,10 @@ export type CategoryProps = {
     ID: string
 }
 
+export type AddCategoryProps = {
+    Name: string
+}
+
 export type OrderProps = {
     Name: string,
     Price: number,

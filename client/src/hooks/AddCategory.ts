@@ -1,7 +1,7 @@
-import { CategoryProps } from "../types/mainTypes"
+import { AddCategoryProps } from "../types/mainTypes"
 
 
-const AddCategory = async (category: CategoryProps) => {
+const AddCategory = async (category: AddCategoryProps) => {
   try {
       const response = await fetch('/addCategory', {
         method: 'POST',

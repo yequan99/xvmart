@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from 'react'
-import { CategoryProps } from '../../types/mainTypes'
+import { CategoryProps, AddCategoryProps } from '../../types/mainTypes'
 import { TextField, Button, Alert, CircularProgress } from '@mui/material';
 import { AddCategory } from '../../hooks/AddCategory';
+import Redirect from './reusable/Redirect';
 
 export default function AddCategories() {
 
@@ -14,7 +15,8 @@ export default function AddCategories() {
 
     const handleSubmit = () => {
         setSubmit(true)
-        AddCategory(category)
+        const addCategory: AddCategoryProps = {Name: category.Name}
+        AddCategory(addCategory)
     }
 
     return (
@@ -40,12 +42,7 @@ export default function AddCategories() {
                 <Button color="success" variant="contained" onClick={handleSubmit}>Add Category</Button>
             </form>
             <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                <Alert severity="success">
-                    <div className="flex justify-between">
-                        <h1>Added {category.Name}. Redirecting you</h1>
-                        <CircularProgress />
-                    </div>
-                </Alert>
+                <Redirect item={category.Name} />
             </div>
         </div>
     )

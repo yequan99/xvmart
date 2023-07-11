@@ -4,6 +4,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
 import { UpdatePhone } from '../../hooks/UpdatePhone'
 import { PhoneProps } from '../../types/mainTypes'
+import Redirect from './reusable/Redirect'
 
 export default function ChangeQR({phoneNumber}: {phoneNumber: PhoneProps}) {
 
@@ -94,12 +95,7 @@ export default function ChangeQR({phoneNumber}: {phoneNumber: PhoneProps}) {
                 <h1 className={`text-red-500 mt-1 ${uploaded ? "hidden" : ""}`}>No image uploaded/ Invalid phone number!</h1>
             </div>
             <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                <Alert severity="success">
-                    <div className="flex justify-between">
-                        <h1>Updated QR Code and phone number. Redirecting you</h1>
-                        <CircularProgress />
-                    </div>
-                </Alert>
+                <Redirect item={phone.PhoneNumber} />
             </div>
         </div>
     )

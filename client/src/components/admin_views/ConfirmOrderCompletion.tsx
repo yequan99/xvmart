@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Box, Modal, Button, Alert, CircularProgress } from '@mui/material'
 import { GetOrderProps } from '../../types/mainTypes'
 import { CompleteOrders } from '../../hooks/CompleteOrder'
+import Redirect from './reusable/Redirect'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -47,12 +48,7 @@ export default function ConfirmOrderCompletion({order}: {order: GetOrderProps}) 
                             <Button color="success" variant="contained" onClick={handleSubmit}>Yes</Button>
                         </div>
                         <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                            <Alert severity="success">
-                                <div className="flex justify-between">
-                                    <h1>Submitted. Refreshing page now </h1>
-                                    <CircularProgress />
-                                </div>
-                            </Alert>
+                            <Redirect item="" />
                         </div>
                     </div>
                 </Box>

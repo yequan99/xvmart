@@ -2,7 +2,7 @@ const { db } = require('../configs/firebaseConfig')
 
 async function del(req,res) {
     try {
-        const data = req.body.product
+        const data = req.body.item
         console.log("received data:", data)
 
         const result = await db.collection('Product').doc(data.ID).delete()
