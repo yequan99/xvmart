@@ -22,7 +22,7 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
 
     return (
         <div className="fixed top-0 w-full z-10 bg-white">
-            <div className="flex flex-row container m-auto items-center justify-between pl-2 md:pl-0 pr-6 md:px-0">
+            <div className="flex flex-row container m-auto pt-2 items-center justify-between pl-2 md:pl-0 pr-6 md:px-0">
                 <div className="flex items-center justify-center">
                     <Link to="/">
                         {/* eslint-disable-next-line */}

@@ -34,10 +34,10 @@ export default function Cards({ item, setAddedToCart }: { item: ProductProps, se
             </div>
             <div className="relative h-28 pt-1 px-1">
                 <div className="flex flex-row justify-between items-center">
-                    <div className="w-[75%] break-words font-bold text-sm lg:text-md">
+                    <div className="w-[75%] break-words font-bold text-sm lg:text-lg">
                         {item.Name} 
                     </div>
-                    <div className="text-sm lg:text-md">
+                    <div className="text-sm lg:text-lg">
                         ${item.Price}
                     </div>
                 </div>
@@ -46,7 +46,7 @@ export default function Cards({ item, setAddedToCart }: { item: ProductProps, se
                 </div>
                 <div className="absolute bottom-0">
                     <button 
-                        className={`font-bold text-sm lg:text-md py-1 px-3 rounded-full border-2 border-green-700 ${added ? "bg-green-700 text-white" : "bg-transparent hover:bg-green-700 text-green-700 hover:text-white"} `}
+                        className={`font-bold text-sm lg:text-lg py-1 px-3 rounded-full border-2 border-green-700 ${added ? "bg-green-700 text-white" : "bg-transparent hover:bg-green-700 text-green-700 hover:text-white"} `}
                         onClick={handleClick}
                     >
                         {buttonText}

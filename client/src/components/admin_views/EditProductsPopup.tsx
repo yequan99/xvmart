@@ -74,7 +74,6 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    {item.Picture_Name}
                     <h1 className="font-bold uppercase" id="modal-modal-title">Edit item details</h1>
                     <div className="mt-2" id="modal-modal-description">
                         <form>

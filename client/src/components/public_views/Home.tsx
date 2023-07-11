@@ -10,7 +10,7 @@ export default function Home({apiData, selectedCategory, setAddedToCart, xvmartp
                 {/* eslint-disable-next-line */}
                 <img className="w-full md:h-fit rounded-md" src={xvmartpic} />
             </div>
-            <div className="text-sm md:text-md mt-4 lg:mt-8">hello, late night cravings</div>
+            <div className="text-sm md:text-lg mt-4 lg:mt-8">hello, late night cravings</div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 py-4 md:py-8">
                 {apiData.map((item,index) => (
                     (item.Category === selectedCategory || selectedCategory === "All") &&
