@@ -1,6 +1,6 @@
 import { ApiProps } from "../../types/mainTypes"
 import EditProductsPopup from "./EditProductsPopup"
-import DeleteProducts from "./DeleteProducts"
+import DeleteItem from "./reusable/DeleteItem"
 
 export default function EditProducts({ apiData }: { apiData: ApiProps }) {
     return (
@@ -33,7 +33,7 @@ export default function EditProducts({ apiData }: { apiData: ApiProps }) {
                             <td className="flex justify-center pt-2">
                                 <div className="flex flex-row w-full justify-center gap-4">
                                     <EditProductsPopup item={item} categories={apiData.category} />
-                                    <DeleteProducts item={item} />
+                                    <DeleteItem item={item} type="product" />
                                 </div>
                             </td>
                         </tr>

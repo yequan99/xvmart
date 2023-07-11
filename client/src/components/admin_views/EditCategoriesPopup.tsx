@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from 'react'
 import { CategoryProps } from '../../types/mainTypes'
 import { Box, Modal, TextField, Button, Alert, CircularProgress } from '@mui/material'
 import { UpdateCategory } from '../../hooks/UpdateCategory'
+import Redirect from './reusable/Redirect'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -62,12 +63,7 @@ export default function EditCategoriesPopup({ item }: {item: CategoryProps}) {
                             <Button color="success" variant="contained" onClick={handleSubmit}>Update Product</Button>
                         </form>
                         <div className={`w-fit pt-4 ${updated ? "" : "hidden"}`}>
-                            <Alert severity="success">
-                                <div className="flex justify-between">
-                                    <h1>Updated {item.Name}. Refreshing page now </h1>
-                                    <CircularProgress />
-                                </div>
-                            </Alert>
+                            <Redirect item={itemDetail.Name} />
                         </div>
                     </div>
                 </Box>

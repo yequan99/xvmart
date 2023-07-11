@@ -1,8 +1,8 @@
 import { AiFillDelete } from 'react-icons/ai'
 import { useState } from 'react'
-import { CategoryProps } from '../../types/mainTypes'
 import { Box, Modal, Button, Alert, CircularProgress } from '@mui/material'
-import { DeleteCategory } from '../../hooks/DeleteCategory'
+import { DeleteCall } from '../../../hooks/DeleteCall'
+import Redirect from './Redirect'
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -16,7 +16,7 @@ const style = {
     p: 4,
 }
 
-export default function DeleteCategories({ item }: {item: CategoryProps}) {
+export default function DeleteItem<T>({ item, type }: {item: T, type: string}) {
 
     const [submit, setSubmit] = useState<boolean>(false)
     const [open, setOpen] = useState(false)
@@ -25,7 +25,7 @@ export default function DeleteCategories({ item }: {item: CategoryProps}) {
 
     const handleSubmit = () => {
         setSubmit(true)
-        DeleteCategory(item)
+        DeleteCall(item, type)
     }
 
     return (
@@ -47,12 +47,7 @@ export default function DeleteCategories({ item }: {item: CategoryProps}) {
                             <Button color="success" variant="contained" onClick={handleSubmit}>Yes</Button>
                         </div>
                         <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                            <Alert severity="success">
-                                <div className="flex justify-between">
-                                    <h1>Submitted. Refreshing page now </h1>
-                                    <CircularProgress />
-                                </div>
-                            </Alert>
+                            <Redirect item="" />
                         </div>
                     </div>
                 </Box>

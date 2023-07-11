@@ -1,6 +1,6 @@
 import { CategoryProps } from "../../types/mainTypes"
 import EditCategoriesPopup from "./EditCategoriesPopup"
-import DeleteCategories from "./DeleteCategories"
+import DeleteItem from "./reusable/DeleteItem"
 
 export default function EditCategories({ categories }: { categories: CategoryProps[] }) {
     return (
@@ -16,7 +16,6 @@ export default function EditCategories({ categories }: { categories: CategoryPro
                     <tr className="text-left uppercase bg-slate-200">
                         <th>Category Name</th>
                         <th className="text-center">Edit</th>
-                        {/* <th className="text-center">Delete</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -27,11 +26,10 @@ export default function EditCategories({ categories }: { categories: CategoryPro
                             <td className="pt-2">
                                 <div className="flex flex-row w-full justify-center gap-4">
                                     <EditCategoriesPopup item={item} />
-                                    <DeleteCategories item={item} />
+                                    <DeleteItem item={item} type="category" />
                                 </div>
                             </td>
                         </tr>
-                    
                     ))}
                 </tbody>
             </table>

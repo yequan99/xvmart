@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from 'react'
 import { CategoryProps, ProductProps } from '../../types/mainTypes'
 import { Box, Modal, TextField, Button, MenuItem, Alert, CircularProgress } from '@mui/material'
 import { UpdateProduct } from '../../hooks/UpdateProduct'
+import Redirect from './reusable/Redirect'
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
 
@@ -155,12 +156,7 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
                             <Button color="success" variant="contained" onClick={handleSubmit}>Update Product</Button>
                         </form>
                         <div className={`w-fit pt-4 ${updated ? "" : "hidden"}`}>
-                            <Alert severity="success">
-                                <div className="flex justify-between">
-                                    <h1>Updated {item.Name}. Refreshing page now </h1>
-                                    <CircularProgress />
-                                </div>
-                            </Alert>
+                            <Redirect item={item.Name} />
                         </div>
                     </div>
                 </Box>
