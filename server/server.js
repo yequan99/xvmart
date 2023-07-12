@@ -36,3 +36,6 @@ app.use('/deleteCategory', deleteCategoryRouter)
 app.use('/updatePhone', updatePhoneRouter)
 
 app.listen(PORT, () => { console.log(`Server started on port ${PORT}`) })
+
+// Export the Express API
+module.exports = app
