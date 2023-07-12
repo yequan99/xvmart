@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-require("dotenv").config()
+// require("dotenv").config()
 const PORT = process.env.PORT || 5001
 
 const productsRouter = require('./src/routes/products.route')
