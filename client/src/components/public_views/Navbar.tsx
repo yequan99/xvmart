@@ -30,7 +30,7 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
                     </Link>
                     <div className="hidden pt-2 pl-10 sm:block">
                         <FormControl sx={{ minWidth: 160 }}>
-                            <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Category</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
