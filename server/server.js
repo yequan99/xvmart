@@ -4,7 +4,7 @@ const app = express()
 require("dotenv").config()
 const PORT = process.env.PORT || 5000
 
-// const productsRouter = require('./src/routes/products.route')
+const productsRouter = require('./src/routes/products.route')
 // const cartRouter = require('./src/routes/cart.route')
 // const ordersRouter = require('./src/routes/orders.route')
 // const addProductRouter = require('./src/routes/addProduct.route')
@@ -23,7 +23,7 @@ app.use(
     })
 )
 
-// app.use('/product', productsRouter)
+app.use('/product', productsRouter)
 // app.use('/cart', cartRouter)
 // app.use('/orders', ordersRouter)
 // app.use('/addProduct', addProductRouter)
@@ -35,7 +35,7 @@ app.use(
 // app.use('/deleteCategory', deleteCategoryRouter)
 // app.use('/updatePhone', updatePhoneRouter)
 
-app.get('/product', (req,res) => {
+app.get('/', (req,res) => {
     return res.status(200).send({"test": "hello"})
 })
 
