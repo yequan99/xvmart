@@ -35,7 +35,7 @@ app.use(
 // app.use('/deleteCategory', deleteCategoryRouter)
 // app.use('/updatePhone', updatePhoneRouter)
 
-app.get('/', (req,res) => {
+app.get('/product', (req,res) => {
     return res.status(200).send({"test": "hello"})
 })
 
