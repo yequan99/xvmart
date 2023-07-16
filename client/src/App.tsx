@@ -6,21 +6,16 @@ import Layout from './components/public_views/Layout'
 import Home from './components/public_views/Home'
 import Login from './components/admin_views/Login'
 import Admin from './components/admin_views/Admin'
+import GetProducts from './hooks/GetProducts';
 
 export default function App() {
 
-  const [backendData, setBackendData] = useState<ApiProps | null>()
+  const [backendData, setBackendData] = useState<ApiProps | null>(null)
   const [selectedCategory, setSelectedCategory] = useState<string>("All")
   const [addedToCart, setAddedToCart] = useState<OrderProps[]>([])
 
   useEffect(() => {
-    fetch("/product").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
+    GetProducts(setBackendData)
   }, [])
 
   useEffect(() => {
