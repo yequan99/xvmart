@@ -1,6 +1,6 @@
 import { MdOutlineDownloadDone } from 'react-icons/md'
 import { useState } from 'react'
-import { Box, Modal, Button, Alert, CircularProgress } from '@mui/material'
+import { Box, Modal, Button } from '@mui/material'
 import { GetOrderProps } from '../../types/mainTypes'
 import { CompleteOrders } from '../../hooks/CompleteOrder'
 import Redirect from './reusable/Redirect'

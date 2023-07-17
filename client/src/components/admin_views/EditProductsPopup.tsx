@@ -1,7 +1,7 @@
 import { MdModeEdit } from 'react-icons/md'
 import { useState, ChangeEvent } from 'react'
 import { CategoryProps, ProductProps } from '../../types/mainTypes'
-import { Box, Modal, TextField, Button, MenuItem, Alert, CircularProgress } from '@mui/material'
+import { Box, Modal, TextField, Button, MenuItem } from '@mui/material'
 import { UpdateProduct } from '../../hooks/UpdateProduct'
 import Redirect from './reusable/Redirect'
 import { AiFillDelete } from 'react-icons/ai'
@@ -56,6 +56,7 @@ export default function EditProductsPopup({ item, categories }: {item: ProductPr
                 contentType: 'image/jpeg',
             }
 
+            // eslint-disable-next-line
             const uploadTask = uploadBytes(imageRef, image, metadata)
         }
 

@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 import { CategoryProps, AddCategoryProps } from '../../types/mainTypes'
-import { TextField, Button, Alert, CircularProgress } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import { AddCategory } from '../../hooks/AddCategory';
 import Redirect from './reusable/Redirect';
 

@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react'
-import { Button, Alert, CircularProgress, TextField, Divider } from '@mui/material'
+import { Button, TextField, Divider } from '@mui/material'
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
 import { UpdatePhone } from '../../hooks/UpdatePhone'

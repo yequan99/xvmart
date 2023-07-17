@@ -1,7 +1,7 @@
 import { MdModeEdit } from 'react-icons/md'
 import { useState, ChangeEvent } from 'react'
 import { CategoryProps } from '../../types/mainTypes'
-import { Box, Modal, TextField, Button, Alert, CircularProgress } from '@mui/material'
+import { Box, Modal, TextField, Button } from '@mui/material'
 import { UpdateCategory } from '../../hooks/UpdateCategory'
 import Redirect from './reusable/Redirect'
 

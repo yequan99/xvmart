@@ -6,6 +6,14 @@ async function get(req, res) {
         let product = []
         let category = []
 
+        // const productRef = db.collection('Product')
+        // const productSnapshot = await productRef.get()
+        // productSnapshot.forEach(doc => {
+        //     let productItem = doc.data()
+        //     productItem.ID = doc.id
+        //     console.log(productItem)
+        // })
+
         await db.collection("Product").get().then(querysnapshot => {
             querysnapshot.forEach((doc) => {
                 const json = orderedJSON.stringify(doc.data(), {order:["Name", "Category", "Price", "Quantity", "Description", "Product_Name"]})

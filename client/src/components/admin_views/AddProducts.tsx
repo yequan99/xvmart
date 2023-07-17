@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 import { ProductProps, CategoryProps, AddProductProps } from '../../types/mainTypes'
-import { TextField, MenuItem, Button, Alert, CircularProgress } from '@mui/material';
+import { TextField, MenuItem, Button } from '@mui/material';
 import { AddProduct } from '../../hooks/AddProduct';
 import Redirect from './reusable/Redirect';
 import { AiFillDelete } from 'react-icons/ai'
@@ -39,7 +39,8 @@ export default function AddProducts({categories}: { categories: CategoryProps[] 
             const metadata = {
                 contentType: 'image/jpeg',
             }
-
+            
+            // eslint-disable-next-line
             const uploadTask = uploadBytes(imageRef, selectedFile, metadata)
         }
     }

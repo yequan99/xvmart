@@ -1,6 +1,6 @@
 import { AiFillDelete } from 'react-icons/ai'
 import { useState } from 'react'
-import { Box, Modal, Button, Alert, CircularProgress } from '@mui/material'
+import { Box, Modal, Button } from '@mui/material'
 import { DeleteCall } from '../../../hooks/DeleteCall'
 import Redirect from './Redirect'
 
