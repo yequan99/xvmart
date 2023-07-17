@@ -1,9 +1,7 @@
 const admin = require("firebase-admin")
-const { stringify } = require("ordered-json")
 require("dotenv").config()
 
-const cert = JSON.stringify(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
-const serviceAccountcert = JSON.parse(cert)
+const serviceAccountcert = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY)
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccountcert),
