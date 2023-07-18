@@ -15,7 +15,18 @@
 
 ## Screenshots
 
+![XVMart - Home Page](https://i.imgur.com/ctCRvxe.jpg)
+![XVMart - Cart Page](https://i.imgur.com/WWf89mB.jpg)
+![XVMart - Admin Page](https://i.imgur.com/ykYX5G6.jpg)
+
+<p float="left">
+    <img src="https://i.imgur.com/0hzn7PU.jpg" width="24.5%">
+    <img src="https://i.imgur.com/QcXikU3.jpg" width="24.5%">
+</p>
+
 ## Architecture diagram
+
+![XVMart - Architecture Diagram](https://i.imgur.com/K8qB13o.png)
 
 ## Technology
 
@@ -33,3 +44,4 @@ Start the app with
 ```
 docker-compose up
 ```
+You can view the app at http://localhost:3000/
