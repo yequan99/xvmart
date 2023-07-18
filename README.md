@@ -20,8 +20,8 @@
 ![XVMart - Admin Page](https://i.imgur.com/ykYX5G6.jpg)
 
 <p float="left">
-    <img src="https://i.imgur.com/0hzn7PU.jpg" width="24.5%" height="20px">
-    <img src="https://i.imgur.com/QcXikU3.jpg" width="24.5%" height="20px">
+    <img src="https://i.imgur.com/0hzn7PU.jpg" width="24.5%" height="400px">
+    <img src="https://i.imgur.com/QcXikU3.jpg" width="24.5%" height="400px">
 </p>
 
 ## Architecture diagram
