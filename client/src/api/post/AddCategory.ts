@@ -6,7 +6,8 @@ export default async function AddCategory(category: AddCategoryProps){
         const response = await fetch('/addCategory', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ category }),
         });

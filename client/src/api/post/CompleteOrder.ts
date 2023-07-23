@@ -6,6 +6,7 @@ export default async function CompleteOrder(order: GetOrderProps) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ order }),
         })

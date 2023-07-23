@@ -6,6 +6,7 @@ export default async function UpdateProduct(product: ProductProps) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ product }),
         })

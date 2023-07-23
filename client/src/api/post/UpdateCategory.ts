@@ -6,6 +6,7 @@ export default async function UpdateCategory(category: CategoryProps) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ category }),
         })

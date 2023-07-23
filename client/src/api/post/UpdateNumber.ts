@@ -6,6 +6,7 @@ export default async function UpdateNumber(phoneNumber: PhoneProps) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ phoneNumber }),
         })

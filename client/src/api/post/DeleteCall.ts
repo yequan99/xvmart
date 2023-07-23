@@ -5,6 +5,7 @@ export default async function DeleteCall<T>(item: T, type: string) {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({ item }),
             });
