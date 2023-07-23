@@ -9,5 +9,5 @@ export default async function GetXVPic(setBackendData: Dispatch<SetStateAction<A
         }
     })
     const data = await response.json()
-    setBackendData((prevState) => ({ ...prevState, ["xvmart"]: data.xvmart }))
+    setBackendData((prevState) => ({ ...prevState, "xvmart": data.xvmart }))
 }

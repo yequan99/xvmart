@@ -9,5 +9,5 @@ export default async function GetQRCode(setBackendData: Dispatch<SetStateAction<
         }
     })
     const data = await response.json()
-    setBackendData((prevState) => ({ ...prevState, ["qrcode"]: data.qrcode }))
+    setBackendData((prevState) => ({ ...prevState, "qrcode": data.qrcode }))
 }

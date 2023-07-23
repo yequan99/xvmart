@@ -9,5 +9,5 @@ export default async function GetProduct(setBackendData: Dispatch<SetStateAction
         }
     })
     const data = await response.json()
-    setBackendData((prevState) => ({ ...prevState, ["product"]: data.product }))
+    setBackendData((prevState) => ({ ...prevState, "product": data.product }))
 }

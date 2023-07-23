@@ -9,5 +9,5 @@ export default async function GetCategory(setBackendData: Dispatch<SetStateActio
         }
     })
     const data = await response.json()
-    setBackendData((prevState) => ({ ...prevState, ["category"]: data.category }))
+    setBackendData((prevState) => ({ ...prevState, "category": data.category }))
 }

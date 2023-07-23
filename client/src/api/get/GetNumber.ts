@@ -9,5 +9,5 @@ export default async function GetNumber(setBackendData: Dispatch<SetStateAction<
         }
     })
     const data = await response.json()
-    setBackendData((prevState) => ({ ...prevState, ["number"]: data.number }))
+    setBackendData((prevState) => ({ ...prevState, "number": data.number }))
 }
