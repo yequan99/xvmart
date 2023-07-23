@@ -3,7 +3,7 @@ import { AddCategoryProps } from "../../types/mainTypes"
 export default async function AddCategory(category: AddCategoryProps){
 // const AddCategory = async (category: AddCategoryProps) => {
     try {
-        const response = await fetch('/addCategory', {
+        const response = await fetch('https://xvmart-api.vercel.app/addCategory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

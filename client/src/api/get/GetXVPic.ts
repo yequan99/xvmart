@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { ApiProps } from '../../types/mainTypes'
 
 export default async function GetXVPic(setBackendData: Dispatch<SetStateAction<ApiProps>>) {
-    const response = await fetch("/xvpic", {
+    const response = await fetch("https://xvmart-api.vercel.app/xvpic", {
         headers : {
             'Content-Type': 'application/json',
             'Accept': 'application/json'

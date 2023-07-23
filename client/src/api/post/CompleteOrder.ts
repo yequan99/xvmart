@@ -2,7 +2,7 @@ import { GetOrderProps } from '../../types/mainTypes'
 
 export default async function CompleteOrder(order: GetOrderProps) {
     try {
-        const response = await fetch('/completeOrder', {
+        const response = await fetch('https://xvmart-api.vercel.app/completeOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

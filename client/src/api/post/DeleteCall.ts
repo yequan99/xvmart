@@ -1,7 +1,7 @@
 export default async function DeleteCall<T>(item: T, type: string) {
     if (type === "product") {
         try {
-            const response = await fetch('/deleteProduct', {
+            const response = await fetch('https://xvmart-api.vercel.app/deleteProduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

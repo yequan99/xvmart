@@ -16,7 +16,6 @@ async function get(req, res) {
         })
 
         const categoryRes = { "category": category }
-        console.log(categoryRes)
         return res.status(200).json(categoryRes)
     } catch (error) {
         console.log("[GET Category Controller] Error getting request: %s", error)

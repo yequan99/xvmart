@@ -2,7 +2,7 @@ import { CategoryProps } from "../../types/mainTypes"
 
 export default async function UpdateCategory(category: CategoryProps) {
     try {
-        const response = await fetch('/updateCategory', {
+        const response = await fetch('https://xvmart-api.vercel.app/updateCategory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

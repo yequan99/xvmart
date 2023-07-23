@@ -2,7 +2,7 @@ import { SendOrderProps } from "../../types/mainTypes";
 
 export default async function SendOrder(sendOrder: SendOrderProps[], navigate: Function) {
     try {
-        const response = await fetch('/cart', {
+        const response = await fetch('https://xvmart-api.vercel.app/cart', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

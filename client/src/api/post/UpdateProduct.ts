@@ -2,7 +2,7 @@ import { ProductProps } from "../../types/mainTypes"
 
 export default async function UpdateProduct(product: ProductProps) {
     try {
-        const response = await fetch('/updateProduct', {
+        const response = await fetch('https://xvmart-api.vercel.app/updateProduct', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import { PhoneProps } from "../../types/mainTypes"
 
 export default async function UpdateNumber(phoneNumber: PhoneProps) {
     try {
-        const response = await fetch('/updatePhone', {
+        const response = await fetch('https://xvmart-api.vercel.app/updatePhone', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

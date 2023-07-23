@@ -2,7 +2,7 @@ import { AddProductProps } from "../../types/mainTypes"
 
 export default async function AddProduct(product: AddProductProps) {
     try {
-        const response = await fetch('/addProduct', {
+        const response = await fetch('https://xvmart-api.vercel.app/addProduct', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
