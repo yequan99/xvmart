@@ -31,8 +31,7 @@ async function get(req, res) {
         }
         
         const productRes = { "product": product }
-        // console.log(productRes)
-        return res.status(200).send(productRes)
+        return res.status(200).json(productRes)
     } catch (error) {
         console.log("[GET Product Controller] Error getting request: %s", error)
         return res.status(500).send(error)

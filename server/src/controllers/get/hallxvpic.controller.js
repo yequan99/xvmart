@@ -11,7 +11,7 @@ async function get(req, res) {
         const hallxvpic = xvpicURL[0]
 
         const xvpicRes = { "xvmart": hallxvpic }
-        return res.status(200).send(xvpicRes)
+        return res.status(200).json(xvpicRes)
     } catch (error) {
         console.log("[Hall XV Pic Controller] Error getting request: %s", error)
         return res.status(500).send(error)

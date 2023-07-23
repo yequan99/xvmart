@@ -11,7 +11,7 @@ async function get(req, res) {
         const qrcode = qrcodeURL[0]
 
         const qrcodeRes = { "qrcode": qrcode }
-        return res.status(200).send(qrcodeRes)
+        return res.status(200).json(qrcodeRes)
     } catch (error) {
         console.log("[QR Code Controller] Error getting request: %s", error)
         return res.status(500).send(error)

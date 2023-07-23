@@ -16,7 +16,7 @@ async function get(req, res) {
         })
 
         const orderRes = { "order": order }
-        return res.status(200).send(orderRes)
+        return res.status(200).json(orderRes)
     } catch (error) {
         console.log("[GET Order Controller] Error getting request: %s", error)
         return res.status(500).send(error)

@@ -13,7 +13,7 @@ async function get(req, res) {
         })
 
         const numberRes = { "number": number }
-        return res.status(200).send(numberRes)
+        return res.status(200).json(numberRes)
     } catch (error) {
         console.log("[GET Number Controller] Error getting request: %s", error)
         return res.status(500).send(error)
