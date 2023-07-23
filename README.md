@@ -12,6 +12,7 @@
 
 - An online minimart for Hall XV to allow residents to view stock availability without the need to go to the physical store
 - Aim to also help Hall council to reduce manpower allocation to look after the minimart, increasing end-to-end operational efficiency
+- View the website at https://xvmart.vercel.app/
 
 ## Screenshots
 
