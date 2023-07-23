@@ -2,7 +2,7 @@ import { MdModeEdit } from 'react-icons/md'
 import { useState, ChangeEvent } from 'react'
 import { CategoryProps, ProductProps } from '../../types/mainTypes'
 import { Box, Modal, TextField, Button, MenuItem } from '@mui/material'
-import { UpdateProduct } from '../../hooks/UpdateProduct'
+import UpdateProduct from '../../api/post/UpdateProduct'
 import Redirect from './reusable/Redirect'
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"

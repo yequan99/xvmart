@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { GetOrderProps, ProductProps } from '../../types/mainTypes'
-import GetOrders from '../../hooks/GetOrders'
+import { GetOrderProps } from '../../types/mainTypes'
+import GetOrder from '../../api/get/GetOrder'
 import ConfirmOrderCompletion from './ConfirmOrderCompletion'
 
-export default function ViewOrders({ products }: { products: ProductProps[] }) {
+export default function ViewOrders() {
 
     const [order, setOrder] = useState<GetOrderProps[]>([])
 
     useEffect(() => {
-        GetOrders(setOrder)
+        GetOrder(setOrder)
     }, [])
 
     const CalculatePrice = (price: number, quantity: number) => {
@@ -35,7 +35,7 @@ export default function ViewOrders({ products }: { products: ProductProps[] }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {order.map((item,index) => (
+                    {order?.map((item,index) => (
                         <tr key={index} className="bg-slate-50 hover:bg-slate-100">
                             <td>{item.Name}</td>
                             <td>{item.Block}-{item.Level}-{item.Unit}</td>

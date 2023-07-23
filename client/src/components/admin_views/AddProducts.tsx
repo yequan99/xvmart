@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react'
 import { ProductProps, CategoryProps, AddProductProps } from '../../types/mainTypes'
 import { TextField, MenuItem, Button } from '@mui/material';
-import { AddProduct } from '../../hooks/AddProduct';
+import AddProduct from '../../api/post/AddProduct';
 import Redirect from './reusable/Redirect';
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes } from "firebase/storage"

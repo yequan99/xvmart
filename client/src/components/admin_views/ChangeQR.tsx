@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from 'react'
 import { Button, TextField, Divider } from '@mui/material'
 import { AiFillDelete } from 'react-icons/ai'
 import { getStorage, ref, uploadBytes, deleteObject } from "firebase/storage"
-import { UpdatePhone } from '../../hooks/UpdatePhone'
+import UpdateNumber from '../../api/post/UpdateNumber'
 import { PhoneProps } from '../../types/mainTypes'
 import Redirect from './reusable/Redirect'
 
@@ -31,7 +31,7 @@ export default function ChangeQR({phoneNumber}: {phoneNumber: PhoneProps}) {
             setUploaded(true)
             setSubmit(true)
 
-            UpdatePhone(phone)
+            UpdateNumber(phone)
 
             const storage = getStorage()
 

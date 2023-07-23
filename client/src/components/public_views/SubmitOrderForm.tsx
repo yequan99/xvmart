@@ -1,8 +1,8 @@
 import { useState, ChangeEvent } from 'react'
 import { UserFormProps, OrderProps, SendOrderProps } from '../../types/mainTypes';
-import { TextField, Button, MenuItem, Box, Modal } from '@mui/material';
+import { TextField, Button, MenuItem, Box, Modal, Alert, CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
-import { SendOrder } from '../../hooks/SendOrder';
+import SendOrder from '../../api/post/SendOrder';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -143,6 +143,14 @@ export default function SubmitOrderForm({cartItems, qrcode, phoneNumber} : { car
                                 <h1 className="text-sm lg:text-lg">{phoneNumber}</h1>
                              </div>
                             <Button color="success" variant="contained" disabled={disabled} onClick={sendOrder}>Submit Order</Button>
+                            <div className={`w-fit pt-4 ${disabled ? "" : "hidden"}`}>
+                                <Alert severity="success">
+                                    <div className="flex justify-between">
+                                        <h1>Sent order. Refreshing page now </h1>
+                                        <CircularProgress />
+                                    </div>
+                                </Alert>
+                            </div>
                         </div>
                     </Box>
                 </Modal>

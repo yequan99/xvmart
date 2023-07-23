@@ -2,7 +2,7 @@ import { MdOutlineDownloadDone } from 'react-icons/md'
 import { useState } from 'react'
 import { Box, Modal, Button } from '@mui/material'
 import { GetOrderProps } from '../../types/mainTypes'
-import { CompleteOrders } from '../../hooks/CompleteOrder'
+import CompleteOrder from '../../api/post/CompleteOrder'
 import Redirect from './reusable/Redirect'
 
 const style = {
@@ -26,7 +26,7 @@ export default function ConfirmOrderCompletion({order}: {order: GetOrderProps}) 
 
     const handleSubmit = () => {
         setSubmit(true)
-        CompleteOrders(order)
+        CompleteOrder(order)
     }
 
     return (
@@ -48,7 +48,7 @@ export default function ConfirmOrderCompletion({order}: {order: GetOrderProps}) 
                             <Button color="success" variant="contained" onClick={handleSubmit}>Yes</Button>
                         </div>
                         <div className={`w-fit pt-4 ${submit ? "" : "hidden"}`}>
-                            <Redirect item="" />
+                            <Redirect item="orders" />
                         </div>
                     </div>
                 </Box>

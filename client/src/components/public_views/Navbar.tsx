@@ -39,7 +39,7 @@ export default function Navbar({ categories, setSelectedCategory, cartCount }: {
                                 onChange={handleDropdownChange}
                                 size="small"
                             >
-                                {categories.map((category,index) => (
+                                {categories?.map((category,index) => (
                                     <MenuItem key={index} value={category.Name}>{category.Name}</MenuItem>
                                 ))}
                             </Select>

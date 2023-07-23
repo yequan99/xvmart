@@ -7,6 +7,6 @@ export default function Redirect({item}: {item: string}) {
                 <h1>Updated {item}. Refreshing page now </h1>
                 <CircularProgress />
             </div>
-    </Alert>
+        </Alert>
     )
 }
